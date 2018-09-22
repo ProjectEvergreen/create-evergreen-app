@@ -18,7 +18,8 @@
     <meta property="og:image" content="https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/logo.jpg" />
     <meta property="og:description" content="Create an evergreen web application with no build configuration." />
 
-    <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- Load GoogleFonts here -->
+    <!-- <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> -->
 
     <!-- Add forwards compatibility for ES5 transpiled web components -->
     <!-- https://github.com/Polymer/lit-element/issues/72#issuecomment-390894353 -->
@@ -30,10 +31,19 @@
 
     <!-- Web Components poyfill for Firefox -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-bundle.js"></script>
+  
+    <style>
+      body {
+        background-color: #466628;
+        color: blue;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Welcome to Create Evergreen App!</h1>
+
+    <eve-app></eve-app>
+  
   </body>
 
 </html>
