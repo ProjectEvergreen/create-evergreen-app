@@ -1,7 +1,13 @@
 # create-evergreen-app
+[![GitHub release](https://img.shields.io/github/tag/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/tags)
+![CircleCI branch](https://img.shields.io/circleci/project/github/ProjectEvergreen/create-evergreen-app/master.svg?style=plastic)
+[![GitHub issues](https://img.shields.io/github/issues-raw/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/issues)
+[![GitHub issues](https://img.shields.io/github/issues-pr-raw/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/issues)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ProjectEvergreen/create-evergreen-app/master/LICENSE.md)
 
 ## Overview
-A starter project for getting up and running with an evergreen web application development stack designed for today's modern browsers.  
+A starter project for getting up and running with an evergreen web application development stack designed for today's modern browsers.
+
 
 ### Project Goals
 The goal of Project Evergreen is to march alongside the modern web and bring that information to this project so that the both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
@@ -16,7 +22,7 @@ This project is made by possible with the much appreciated existence of tools li
 
 And of course, nods and kudos go out to the maintainers of [Create React App](https://github.com/facebook/create-react-app) (CRA) and Pascal Shlip (@thepassle) of [Create Lit App](https://github.com/thepassle/create-lit-app) for the inspiration.
 
-Thank you to all of you!
+Thank you, to all of you!
 
 #### Under Development
 This repo and Project Evergreen itself are still young and maturing rapidly.  The Project Evergreen GitHub organization [project tracker](https://github.com/ProjectEvergreen/project-evergreen/projects) captures the high level goals and next steps, with plans to keep adding those lessons learned as features and improvements to this repo. 
@@ -31,16 +37,24 @@ Immediate needs for this repo are:
 > 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
 
 ## Getting Started
-Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running in minutes:
-1. Clone the repo `git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app`
-1. Run `npm install`
-1. Run `npm start`
+Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running:
+```shell
+# 1) clone the repo
+$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
+$ cd my-app
 
-> 📖 For more documentation and developer guides,  please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
+# 2) install dependencies
+$ npm install
+
+# 3) Start developing!
+$ npm start
+```
+
+> 📖 For more documentation and developer guides that cover topics like the build, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
 
 
 ## Usage
-To start developing, you can simply go ahead and edit and add files as you need.  Most of the build stuff should already be in place, so all you need to do is start editing `src/`.  
+To start developing, you can simply go ahead and edit and add files as you need in `src/`.  
 
 > ℹ️ Feel free to edit or delete any content / code related to Project Evergreen to customize this repo to your own needs.
 
