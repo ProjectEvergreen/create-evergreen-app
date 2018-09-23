@@ -1,5 +1,15 @@
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :host {
-  
+
   & header {
     background-color: #ffffff;
   }
@@ -8,12 +18,13 @@
     display: inline-block;
     height: 100px;
     width: 100px;
+    animation: logo-spin infinite 30s linear;
   }
 
   & header h1 {
-    margin: 0;
+    margin: 5px;
     padding: 0;
-    color: #efefef;
+    color: #020202;
   }
 
 }

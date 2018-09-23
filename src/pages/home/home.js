@@ -11,9 +11,7 @@ class HomePageComponent extends LitElement {
 
       <div>
 
-        <h1>Welcome to Project Evergreen!</h1>
-
-        <p>To get started, edit <code>./src/pages/home/home.js</code>!</p>
+        <p>To get started, edit <code>src/pages/home/home.js</code>!</p>
       
       </div>
     `;
