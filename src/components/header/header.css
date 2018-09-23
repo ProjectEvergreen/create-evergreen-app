@@ -1,0 +1,19 @@
+:host {
+  
+  & header {
+    background-color: #ffffff;
+  }
+
+  & header img {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+  }
+
+  & header h1 {
+    margin: 0;
+    padding: 0;
+    color: #efefef;
+  }
+
+}

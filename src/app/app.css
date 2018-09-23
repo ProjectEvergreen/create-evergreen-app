@@ -1,3 +1,7 @@
-.app-container {
-  color: white;
+:host {
+  
+  & section {
+    text-align: center;
+  }
+
 }
