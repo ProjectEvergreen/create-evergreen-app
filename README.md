@@ -6,8 +6,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ProjectEvergreen/create-evergreen-app/master/LICENSE.md)
 
 ## Overview
-A starter project for getting up and running with an evergreen web application development stack designed for today's modern browsers.
-
+A starter project for getting up and running with an evergreen web application development stack designed for today's modern web.
 
 ### Project Goals
 The goal of Project Evergreen is to march alongside the modern web and bring that information to this project so that the both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
