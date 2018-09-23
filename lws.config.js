@@ -1,7 +1,7 @@
 // configuration file for local-web-server CLI, used in yarn serve
 module.exports = {
 
-  directory: 'dist',
+  directory: 'public',
 
   spa: 'index.html',
 
