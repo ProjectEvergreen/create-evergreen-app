@@ -17,6 +17,7 @@
   "scripts": {
     "build": "rimraf ./public && webpack --config ./webpack.config.prod.js --progress",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",
+    "gh-pages": "rimraf ./docs && npm run build && cp -rv ./public/ ./docs",
     "lint": "eslint *.js src/**/**/*.js",
     "serve": "npm run build && ws",
     "start": "npm run develop",
