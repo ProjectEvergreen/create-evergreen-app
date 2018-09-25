@@ -40,7 +40,7 @@ Immediate needs for this repo are:
 Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running:
 ```shell
 # 1) clone the repo
-$ npx create-evergreen-app my-app
+$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
 $ cd my-app
 
 # 2) install dependencies
