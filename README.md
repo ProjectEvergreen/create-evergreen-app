@@ -7,11 +7,12 @@
 
 ## Overview
 A starter project for getting up and running with an evergreen web application development stack designed for today's modern web.
+![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner.png)
 
 ### Project Goals
-The goal of Project Evergreen is to march alongside the modern web and bring that information to this project so that the both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
+The goal of Project Evergreen is to march alongside the modern web and bring that to this repo so that both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
 
-### Acknowledgements
+#### Acknowledgements
 This project is made by possible with the much appreciated existence of tools like:
 - [webpack](https://webpack.js.org/) v4
 - [LitElement](https://github.com/Polymer/lit-element)
@@ -29,8 +30,8 @@ This repo and Project Evergreen itself are still young and maturing rapidly.  Th
 Immediate needs for this repo are:
 - Routing 
 - Route based code spliting + Lazy Loading 
+- Opt-in IE11 Support
 - Unit Testing w/ Karma
-- [Proper installation steps]()
 - Documentation
 
 > 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
@@ -39,7 +40,7 @@ Immediate needs for this repo are:
 Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running:
 ```shell
 # 1) clone the repo
-$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
+$ npx create-evergreen-app my-app
 $ cd my-app
 
 # 2) install dependencies
@@ -51,11 +52,10 @@ $ npm start
 
 > 📖 For more documentation and developer guides that cover topics like the build, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
 
-
 ## Usage
 To start developing, you can simply go ahead and edit and add files as you need in `src/`.  
 
-> ℹ️ Feel free to edit or delete any content / code related to Project Evergreen to customize this repo to your own needs.
+> ℹ️ Feel free to edit or delete any content / code related to Create Evergreen App (including README.md) to customize this repo to your own needs.
 
 ### Development
 Automated tasks have been made available as **npm** scripts that you can run from the command line:
