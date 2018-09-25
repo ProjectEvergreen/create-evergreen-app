@@ -7,6 +7,7 @@
 
 ## Overview
 A starter project for getting up and running with an evergreen web application development stack designed for today's modern web.
+![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner.png)
 
 ### Project Goals
 The goal of Project Evergreen is to march alongside the modern web and bring that information to this project so that the both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
@@ -29,8 +30,8 @@ This repo and Project Evergreen itself are still young and maturing rapidly.  Th
 Immediate needs for this repo are:
 - Routing 
 - Route based code spliting + Lazy Loading 
+- Opt-in IE11 Support
 - Unit Testing w/ Karma
-- [Proper installation steps]()
 - Documentation
 
 > 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
@@ -39,7 +40,7 @@ Immediate needs for this repo are:
 Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running:
 ```shell
 # 1) clone the repo
-$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
+$ npx create-evergreen-app my-app
 $ cd my-app
 
 # 2) install dependencies
