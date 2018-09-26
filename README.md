@@ -6,7 +6,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ProjectEvergreen/create-evergreen-app/master/LICENSE.md)
 
 ## Overview
-A starter project for getting up and running with an evergreen web application development stack designed for today's modern web.
+A starter project for getting up and running with an evergreen web application development stack designed by, and for, today's [modern web](https://github.com/ProjectEvergreen/project-evergreen/wiki/Browser-Support-Matrix#evergreen-browsers).
 ![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner.png)
 
 ### Project Goals
@@ -37,7 +37,7 @@ Immediate needs for this repo are:
 > 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
 
 ## Getting Started
-Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running:
+Make sure you have Node.js 8.x [installed](https://nodejs.org/) and then follow these steps to get up and running:
 ```shell
 # 1) create a new evergreen app
 $ npx create-evergreen-app my-app
@@ -50,7 +50,7 @@ $ npm install
 $ npm start
 ```
 
-> 📖 For more documentation and developer guides that cover topics like the build, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
+> 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
 
 ## Usage
 To start developing, you can simply go ahead and edit and add files as you need in `src/`.  
@@ -66,6 +66,19 @@ Automated tasks have been made available as **npm** scripts that you can run fro
 
 ### Guides
 These are some guides related to configuring different parts of this application to customize it for your needs.
+
+#### Folder Structure
+There is no right or wrong folder structure per se as with most decisions relating to technology, it's about finding the best tool for the job.  Pick the conventions that fit your team / project best.
+
+That said, CEA does come with with a lightly opinionated structure in the _src/_ directory as one of the main goals of a good folder structure should be to assist in the finding of  files / code faster and being predicatable.  Here is some info on the approach presented / suggested in this repo:
+- _index.js_ - Main Entry point into the application (defined in _webpack.config.common.js_)
+- _index.html_ - Defines the HTML "shell" of the application.
+- _app/_ - The top level "app" component, that will be used to bootstrap the application.
+- _components/_ - Essentially all the custom elements for an app will go here, encapsulating all reusable UI logic.
+- _pages/_ - Routable states and / or views that users will navigate to within an application.
+- _services/_ - Utilities for making (RESTful) API calls, convenience "wrappers" around browser APIs (Web Storage), etc.  These generally don't interact with the DOM (that's what components are for).
+
+> Unit tests are recommended to be kept side by side with the component / `class` / etc.  For integration and E2E tests, consider making a _test/_ directory alongside the _src/_ directory and put those tests there.
 
 #### Setting Up (API) Proxies
 In _webpack.config.develop.js_ and _lws.config.js_ are sections for setting up proxies for routing requests, say to an API running in your development envrionment.  Edit the placeholders to match your particular needs.
