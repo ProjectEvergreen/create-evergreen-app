@@ -72,6 +72,3 @@ In _webpack.config.develop.js_ and _lws.config.js_ are sections for setting up p
 
 #### CSS + Shadow DOM
 // TODO
-
-
-    "create-evergreen-app": "node ./tasks/cea-install.js",
