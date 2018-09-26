@@ -39,8 +39,8 @@ Immediate needs for this repo are:
 ## Getting Started
 Make sure you have Node.js 8.x [installed]() and then follow these steps to get up and running:
 ```shell
-# 1) clone the repo
-$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
+# 1) create a new evergreen app
+$ npx create-evergreen-app my-app
 $ cd my-app
 
 # 2) install dependencies
@@ -72,3 +72,6 @@ In _webpack.config.develop.js_ and _lws.config.js_ are sections for setting up p
 
 #### CSS + Shadow DOM
 // TODO
+
+
+    "create-evergreen-app": "node ./tasks/cea-install.js",
