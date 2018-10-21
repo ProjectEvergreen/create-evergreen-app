@@ -23,10 +23,12 @@ module.exports = function (config) {
 
   config.set({
     basePath: '',
-    files: [{
-      pattern: './karma-test-shim.js',
-      watched: false
-    }],
+    files: [
+      // { pattern: './node_modules/query-selector-shadow-dom/dist/querySelectorShadowDom.js', watched: false },
+      { pattern: './karma-test-shim.js', watched: false }
+      // { pattern: './node_modules/query-selector-shadow-dom/dist/querySelectorShadowDom.js', watched: false }
+      // { pattern: './node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js', watched: false }
+    ],
     preprocessors: {
       './karma-test-shim.js': ['webpack', 'sourcemap']
     },
