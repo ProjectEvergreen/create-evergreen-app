@@ -24,8 +24,8 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     files: [{
-      pattern: './src/**/*.spec.js',
-      watched: true
+      pattern: './karma-test-shim.js',
+      watched: false
     }],
     preprocessors: {
       './karma-test-shim.js': ['webpack', 'sourcemap']
