@@ -25,5 +25,9 @@ jobs:
           command: npm run lint
 
       - run:
+          name: Run Unit Tests
+          command: export NODE_ENV=production && npm run test
+
+      - run:
           name: Execute The Build
           command: npm run build
