@@ -1,4 +1,5 @@
 *DS_Store
 *.log
-public/
 node_modules/
+public/
+reports/

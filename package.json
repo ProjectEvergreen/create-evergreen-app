@@ -24,7 +24,7 @@
     "lint": "eslint *.js src/**/**/*.js tasks/*.js",
     "serve": "npm run build && ws",
     "start": "npm run develop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "rimraf ./reports && karma start"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
@@ -39,14 +39,25 @@
     "favicons-webpack-plugin": "0.0.9",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "jasmine": "^3.2.0",
+    "jasmine-core": "^3.2.1",
+    "karma": "^2.0.5",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
+    "karma-jasmine": "^1.1.2",
+    "karma-junit-reporter": "^1.2.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^3.0.5",
     "local-web-server": "^2.6.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
+    "puppeteer": "^1.9.0",
     "rimraf": "^2.6.2",
-    "webpack": "^4.19.1",
+    "webpack": "^4.22.0",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8",
+    "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
