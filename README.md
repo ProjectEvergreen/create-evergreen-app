@@ -62,6 +62,7 @@ Automated tasks have been made available as **npm** scripts that you can run fro
 - `npm run develop` - To start a development server with live reload and file watching
 - `npm run build` - Generate a production build of the app for deployment
 - `npm run serve` - Locally serve a production build
+- `npm run test` - Run unit tests in TDD mode (prepend with `NODE_ENV=production` for "single run" usage)
 - `npm start` - alias to the `develop` task
 
 ### Guides

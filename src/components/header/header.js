@@ -10,7 +10,7 @@ class HeaderComponent extends LitElement {
         ${css}
       </style>
 
-      <header class="header">
+      <header>
 
         <a href="https://projectevergreen.github.io/">
           <img src=${logo} alt="Project Evergreen logo"/>
