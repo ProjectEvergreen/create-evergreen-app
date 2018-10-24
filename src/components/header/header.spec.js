@@ -12,6 +12,7 @@ describe('Header Component', () => {
   });
 
   afterEach(() => {
+    header.remove();
     header = null;
   });
 
