@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 // Prevent Karma from running prematurely.
 __karma__.loaded = function () {};
 
