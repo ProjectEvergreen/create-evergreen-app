@@ -14,16 +14,18 @@
     background-color: #ffffff;
   }
 
-  & header img {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    animation: logo-spin infinite 30s linear;
+  & header a {
+    display: block;
+    width: 100%;
+    height: 40vh;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 
   & header h1 {
     margin: 5px;
-    padding: 0;
+    padding: 0 0 20px 0;
     color: #020202;
   }
 
