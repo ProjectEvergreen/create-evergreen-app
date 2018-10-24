@@ -2,6 +2,7 @@ const commonConfig = require('./webpack.config.common');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const webpackMerge = require('webpack-merge');
+const path = require('path');
 
 module.exports = webpackMerge(commonConfig, {
   
@@ -11,7 +12,7 @@ module.exports = webpackMerge(commonConfig, {
     new FaviconsWebpackPlugin({
       logo: './favicon.png',
       emitStats: true,
-      prefix: 'icons/',
+      prefix: '/',
       statsFilename: 'icons/stats.json',
       inject: true,
       title: 'Create Evergreen App',
