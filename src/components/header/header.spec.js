@@ -25,10 +25,10 @@ describe('Header Component', () => {
     });
 
     it('should have a logo', () => { 
-      const logo = header.shadowRoot.querySelectorAll('header img')[0];
+      const logo = header.shadowRoot.querySelectorAll('header a')[0];
 
-      expect(logo.src).toBeDefined();
-      expect(logo.alt).toBeDefined();
+      expect(logo.style).toBeDefined();
+      expect(logo.title).toBeDefined();
     });
 
     it('should have a link to the project website', () => { 
