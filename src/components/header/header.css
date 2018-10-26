@@ -12,21 +12,27 @@
 
   & header {
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   & header a {
-    display: block;
-    width: 100%;
     height: 40vh;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+    animation: logo-spin infinite 30s linear;
   }
 
   & header h1 {
     margin: 5px;
     padding: 0 0 20px 0;
     color: #020202;
+
+    @media only screen and (max-width: 400px) {
+      font-size: 1.8em;
+    }
   }
 
 }
