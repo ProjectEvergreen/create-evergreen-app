@@ -11,7 +11,7 @@ webpackConfig.mode = 'development';
 webpackConfig.module.rules.push({
   test: /\.js$/,
   enforce: 'post',
-  exclude: [/\.spec.js$/, /node_modules/],
+  exclude: [/\.spec.js$/, /node_modules/, /karma-test-shim.js$/],
   loader: 'istanbul-instrumenter-loader',
   query: {
     esModules: true
