@@ -77,7 +77,7 @@ $ npm run develop
 ```
 
 ### Package Management
-Your team may choose to use either **npm** or **Yarn**, just make sure to pick one and remove the other manager's lock file.  Make sure to update the lock file whenever adding / removing package.
+Your team may choose to use either **npm** or **Yarn**, just make sure to pick one and remove the other manager's lock file.  Make sure to update the lock file whenever adding / removing a package.
 
 ### Guides
 These are some guides related to configuring different parts of this application to customize it for your needs.
