@@ -73,7 +73,7 @@ $ yarn develop
 or
 
 # npm
-# npm run develop
+$ npm run develop
 ```
 
 ### Guides
