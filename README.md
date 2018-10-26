@@ -58,12 +58,23 @@ To start developing, you can simply go ahead and edit and add files as you need 
 > ℹ️ Feel free to edit or delete any content / code related to Create Evergreen App (including README.md) to customize this repo to your own needs.
 
 ### Development
-Automated tasks have been made available as **npm** scripts that you can run from the command line:
-- `npm run develop` - To start a development server with live reload and file watching
-- `npm run build` - Generate a production build of the app for deployment
-- `npm run serve` - Locally serve a production build
-- `npm run test` - Run unit tests in TDD mode (prepend with `NODE_ENV=production` for "single run" usage)
-- `npm start` - alias to the `develop` task
+Automated tasks have been made available as **npm** scripts that you can run from the command line using `yarn` or `npm run`:
+- `develop` - To start a development server with live reload and file watching
+- `build` - Generate a production build of the app for deployment
+- `serve` - Locally serve a production build
+- `test` - Run unit tests in TDD mode (prepend with `NODE_ENV=production` for "single run" usage)
+- `start` - alias to the `develop` task
+
+e.g. to start developing, run
+```shell
+# yarn
+$ yarn develop
+
+or
+
+# npm
+# npm run develop
+```
 
 ### Guides
 These are some guides related to configuring different parts of this application to customize it for your needs.
