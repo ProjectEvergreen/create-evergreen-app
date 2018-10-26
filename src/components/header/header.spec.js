@@ -21,7 +21,7 @@ describe('Header Component', () => {
     it('should have a greeting', () => { 
       const greeting = header.shadowRoot.querySelectorAll('header h1')[0];
 
-      expect(greeting.innerHTML).toBe('Welcome to Create Evergreen App!');
+      expect(greeting.innerHTML).toMatch(/.*Create.*Evergreen.*App.*/);
     });
 
     it('should have a logo', () => { 
