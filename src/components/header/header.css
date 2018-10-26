@@ -14,7 +14,10 @@
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    width: 100%;
+
+    & small {
+      display: block;
+    }
   }
 
   & header a {
