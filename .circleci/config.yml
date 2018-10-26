@@ -18,16 +18,16 @@ jobs:
 
       - run:
           name: Install Project Dependencies
-          command: npm install
+          command: yarn install
 
       - run:
           name: Run Linter
-          command: npm run lint
+          command: yarn lint
 
       - run:
           name: Run Unit Tests
-          command: export NODE_ENV=production && npm run test
+          command: export NODE_ENV=production && yarn test
 
       - run:
           name: Execute The Build
-          command: npm run build
+          command: yarn build
