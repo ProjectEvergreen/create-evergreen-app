@@ -46,8 +46,16 @@ $ cd my-app
 # 2) install dependencies
 $ npm install
 
+# or 
+
+$ yarn install
+
 # 3) Start developing!
-$ npm start
+$ npm start 
+
+# or 
+
+$ yarn start
 ```
 
 > 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
