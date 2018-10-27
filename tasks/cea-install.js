@@ -4,7 +4,7 @@
 const cp = require('child_process');
 
 const TARGET_DIR = process.argv[2];
-const CLEANUP_DIRS = ['docs', '.circleci', '.github', '.git', '.npmignore'];
+const CLEANUP_DIRS = ['docs', '.circleci', '.github', '.git', '.npmignore', 'tasks'];
 
 console.log('-------------------------------------------------------');
 console.log('Welcome to Create Evergreen App ♻️');
