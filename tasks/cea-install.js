@@ -4,7 +4,7 @@
 const cp = require('child_process');
 
 const TARGET_DIR = process.argv[2];
-const CLEANUP_DIRS = ['docs', '.circleci', '.github', '.git', '.npmignore'];
+const CLEANUP_DIRS = ['docs', '.circleci', '.github', '.git', '.npmignore', 'tasks'];
 
 console.log('-------------------------------------------------------');
 console.log('Welcome to Create Evergreen App ♻️');
@@ -24,7 +24,7 @@ CLEANUP_DIRS.forEach((directory) => {
 console.log('-------------------------------------------------------');
 console.log('Success, your project is ready to go!');
 console.log(`Just run: cd ${TARGET_DIR}`);
-console.log('And then: npm install && npm start');
+console.log('And then: npm install && npm start (or use yarn)');
 console.log('-------------------------------------------------------');
 
 process.exit(); // eslint-disable-line no-process-exit

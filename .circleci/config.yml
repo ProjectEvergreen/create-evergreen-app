@@ -31,3 +31,7 @@ jobs:
       - run:
           name: Execute The Build
           command: yarn build
+
+      - run:
+          name: CEA Install Self Test
+          command: node ./tasks/cea-install my-app
