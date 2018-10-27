@@ -7,6 +7,10 @@ module.exports = webpackMerge(commonConfig, {
   
   mode: 'production',
 
+  performance: {
+    hints: 'error'
+  },
+
   plugins: [
     new FaviconsWebpackPlugin({
       logo: './favicon.png',

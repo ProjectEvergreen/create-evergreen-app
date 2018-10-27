@@ -108,3 +108,10 @@ In _webpack.config.develop.js_ and _lws.config.js_ are sections for setting up p
 
 #### CSS + Shadow DOM
 // TODO
+
+#### Performance
+Performance is an important consideration for developing and maintaing any modern web application.  Out of the box, this project uses **webpack**'s [default settings for performance budgets](https://webpack.js.org/configuration/performance/) and will error when its thresholds are exceeded.  
+
+The goal of this project will be to support good code splitting and lazy loading strategies by default to allow apps to scale horizontally as more pages / features / dependencies get added.
+
+To learn more about performance best practices for modern web application development, check out the [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki/Performance).
