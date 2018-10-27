@@ -6,7 +6,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ProjectEvergreen/create-evergreen-app/master/LICENSE.md)
 
 ## Overview
-A starter project for getting up and running with an evergreen web application development stack designed by, and for, today's [modern web](https://github.com/ProjectEvergreen/project-evergreen/wiki/Browser-Support-Matrix#evergreen-browsers).
+A starter project for getting up and running with an evergreen web application development stack designed by, and for, today's [modern web](https://github.com/ProjectEvergreen/create-evergreen-app/wiki/Browser-Support-Matrix#evergreen-browsers).
 ![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner.png)
 
 ### Project Goals
@@ -58,7 +58,7 @@ $ npm start
 $ yarn start
 ```
 
-> 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki)!
+> 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki)!
 
 ## Usage
 To start developing, you can simply go ahead and edit and add files as you need in `src/`.  
@@ -114,4 +114,4 @@ Performance is an important consideration for developing and maintaing any moder
 
 The goal of this project will be to support good code splitting and lazy loading strategies by default to allow apps to scale horizontally as more pages / features / dependencies get added.
 
-To learn more about performance best practices for modern web application development, check out the [wiki](https://github.com/ProjectEvergreen/project-evergreen/wiki/Performance).
+To learn more about performance best practices for modern web application development, check out the [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki/Performance).
