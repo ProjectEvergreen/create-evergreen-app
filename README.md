@@ -31,12 +31,12 @@ Immediate needs for this repo are:
 - Routing 
 - Route based code spliting + Lazy Loading 
 - Opt-in IE11 Support
-- Unit Testing w/ Karma
-- Documentation
 
 > 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
 
 ## Getting Started
+> Installer assumes you have [`git`](https://git-scm.com/) on your system
+
 Make sure you have Node.js 8.x [installed](https://nodejs.org/) and then follow these steps to get up and running:
 ```shell
 # 1) create a new evergreen app
