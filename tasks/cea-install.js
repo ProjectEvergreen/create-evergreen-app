@@ -3,7 +3,7 @@
 
 const cp = require('child_process');
 
-const TARGET_DIR = process.argv[2];
+const TARGET_DIR = process.argv[2]; 
 const CLEANUP_DIRS = ['docs', '.circleci', '.github', '.git', '.npmignore', 'tasks'];
 
 console.log('-------------------------------------------------------');
