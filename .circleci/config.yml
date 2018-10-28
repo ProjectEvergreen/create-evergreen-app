@@ -35,3 +35,9 @@ jobs:
       - run:
           name: CEA Install Self Test
           command: node ./tasks/cea-install my-app
+
+      # this was part of the lint task but what was removed
+      # but have to be moved here since tasks/* wont be on the filesystem after an install
+      - run:
+          name: Self Lint of CEA Install Script
+          command: ./node_modules/.bin/eslint ./tasks/*.js
