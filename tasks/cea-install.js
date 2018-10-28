@@ -14,7 +14,7 @@ console.log('-------------------------------------------------------');
 cp.execSync(`rm -rf ${TARGET_DIR}`);
 
 // clone CEA from github
-cp.execSync(`git clone https://github.com/ProjectEvergreen/create-evergreen-app ${TARGET_DIR}`);
+cp.execSync(`git clone https://github.com/ProjectEvergreen/create-evergreen-app#c3ccaba86f35839e100823a94031f596bf862741 ${TARGET_DIR}`);
 
 // clean up the new repo directory
 CLEANUP_DIRS.forEach((directory) => {
