@@ -121,9 +121,9 @@ For convenience, Create Evergreen App comes with the dependencies needed to run 
 1. Chrome (headless w/[Puppeteer](https://github.com/GoogleChrome/puppeteer/))
 1. Firefox
 
-**Firefox Notes**
-1. To enable Firefox, uncomment the two lines in the `files` array in _karma.conf.js_, related to the  `~@webcomponents` dependencies
-1. Add Firefox to the browser's array in _karma.conf.js_
+**Using Firefox**
+1. Firefox (and other browsers) will likely need Custom Elements and Shadow DOM polyfilled.  To add this polyfill in Karma, uncomment the lines in the `files` array in _karma.conf.js_ related to  `~@webcomponents`.
+1. Add Firefox to the `browsers` array in _karma.conf.js_.
 
 - For information on adding more browsers, see [the Karma docs](http://karma-runner.github.io/3.0/config/browsers.html).
 - For more information on testing in general, see [our wiki!](https://github.com/ProjectEvergreen/create-evergreen-app/wiki).
