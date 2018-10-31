@@ -115,3 +115,15 @@ Performance is an important consideration for developing and maintaing any moder
 The goal of this project will be to support good code splitting and lazy loading strategies by default to allow apps to scale horizontally as more pages / features / dependencies get added.
 
 To learn more about performance best practices for modern web application development, check out the [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki/Performance).
+
+#### Unit Testing
+For convenience, Create Evergreen App comes with the dependencies needed to run two browsers out of the box
+1. Chrome (headless w/[Puppeteer](https://github.com/GoogleChrome/puppeteer/))
+1. Firefox
+
+**Firefox Notes**
+1. To enable Firefox, uncomment the two lines in the `files` array in _karma.conf.js_, related to the  `~@webcomponents` dependencies
+1. Add Firefox to the browser's array in _karma.conf.js_
+
+- For information on adding more browsers, see [the Karma docs](http://karma-runner.github.io/3.0/config/browsers.html).
+- For more information on testing in general, see [our wiki!](https://github.com/ProjectEvergreen/create-evergreen-app/wiki).

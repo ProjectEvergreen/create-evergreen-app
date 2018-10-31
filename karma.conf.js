@@ -25,6 +25,9 @@ module.exports = function (config) {
     basePath: '',
     files: [
       { pattern: './karma-test-shim.js', watched: false }
+      // uncomment these two for
+      // { pattern: './node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js', watched: false },
+      // { pattern: './node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js', watched: false },
     ],
     preprocessors: {
       './karma-test-shim.js': ['webpack', 'sourcemap']
@@ -33,6 +36,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-junit-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('karma-webpack'),
@@ -46,6 +50,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: logLevel,
     autoWatch: shouldWatch,
+    // currently supported by CEA out of the box: Chrome (headless) and Firefox
+    // to add more browsers: http://karma-runner.github.io/3.0/config/browsers.html
     browsers: ['ChromiumHeadlessConfigured'],
     customLaunchers: {
       ChromiumHeadlessConfigured: {
