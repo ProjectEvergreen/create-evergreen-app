@@ -27,7 +27,7 @@ module.exports = function (config) {
       { pattern: './karma-test-shim.js', watched: false }
       // uncomment these two for
       // { pattern: './node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js', watched: false },
-      // { pattern: './node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js', watched: false },
+      // { pattern: './node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js', watched: false }
     ],
     preprocessors: {
       './karma-test-shim.js': ['webpack', 'sourcemap']
