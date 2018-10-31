@@ -127,3 +127,5 @@ For convenience, Create Evergreen App comes with the dependencies needed to run 
 
 - For information on adding more browsers, see [the Karma docs](http://karma-runner.github.io/3.0/config/browsers.html).
 - For more information on testing in general, see [our wiki!](https://github.com/ProjectEvergreen/create-evergreen-app/wiki).
+
+> Chrome headless is enabled by default since it is the most portable between local and continuous integration environments.
