@@ -3,7 +3,6 @@ import css from './header.css';
 import logo from './logo.png';
 
 class HeaderComponent extends LitElement {
-
   render() {
     return html`      
       <style>

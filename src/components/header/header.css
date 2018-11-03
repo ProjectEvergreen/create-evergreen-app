@@ -9,7 +9,6 @@
 }
 
 :host {
-
   & header {
     background-color: #ffffff;
     display: flex;
@@ -37,5 +36,4 @@
       font-size: 1.8em;
     }
   }
-
 }
