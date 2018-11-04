@@ -1,7 +1,9 @@
 :host {
-  
+  & html {
+    background-color: red;
+  }
+
   & section {
     text-align: center;
   }
-
 }

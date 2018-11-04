@@ -1,24 +1,23 @@
 import { html, LitElement } from '@polymer/lit-element';
 import css from './header.css';
-import logo from './logo.png';
 
 class HeaderComponent extends LitElement {
-
   render() {
     return html`      
       <style>
         ${css}
       </style>
 
-      <header>
-
-        <a href="https://projectevergreen.github.io/" title="Project Evergreen home link" style="background-image: url(./${logo})">&nbsp;</a>
-
-        <h1>
-          <small>Welcome to</small>
-          Create&nbsp;Evergreen&nbsp;App!</h1>
-      
-      </header>
+        <nav>
+        <div class="container">
+          <div class="brand"><h1>Project Evergreen</h1></div>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/docs">Docs</a></li>
+          </ul>
+        </div>
+        </nav>
     `;
   }
 }

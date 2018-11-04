@@ -1,41 +1,61 @@
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
   }
+}
 
-  to {
-    transform: rotate(360deg);
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 750px;
   }
 }
 
 :host {
-
-  & header {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-
-    & small {
+  & nav {
+    display: inline-block;
+    background-color: green;
+    border: 1px solid black;
+    width: 100%;
+    position: relative;
+  }
+  & .container {
+    & .brand {
+      color: white;
       display: block;
     }
-  }
-
-  & header a {
-    height: 40vh;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    animation: logo-spin infinite 30s linear;
-  }
-
-  & header h1 {
-    margin: 5px;
-    padding: 0 0 20px 0;
-    color: #020202;
-
-    @media only screen and (max-width: 400px) {
-      font-size: 1.8em;
+    & ul {
+      margin: 0;
+      margin-left: auto;
+      & li {
+        position: relative;
+        float: left;
+        display: block;
+        & a {
+          font-weight: 600;
+          color: white;
+          text-decoration: none;
+          padding: 25px;
+          position: relative;
+          font-size: 18px;
+          display: block;
+          &:hover {
+            color: green;
+            background-color: white;
+          }
+        }
+      }
     }
   }
-
+  & .container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

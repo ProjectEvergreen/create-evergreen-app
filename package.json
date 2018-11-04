@@ -26,12 +26,11 @@
     "start": "npm run develop",
     "test": "rimraf ./reports && karma start"
   },
-  "dependencies": {
-    "@polymer/lit-element": "^0.6.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "@polymer/lit-element": "^0.6.2",
     "babel-loader": "^8.0.2",
     "babel-plugin-transform-builtin-classes": "^0.6.1",
     "css-loader": "^1.0.0",
@@ -52,10 +51,14 @@
     "karma-junit-reporter": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.5",
+    "lit-html": "^0.12.0",
+    "lit-redux-router": "^0.2.2",
     "local-web-server": "^2.6.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
     "puppeteer": "^0.11.0",
+    "pwa-helpers": "^0.9.0",
+    "redux": "^4.0.1",
     "rimraf": "^2.6.2",
     "webpack": "^4.22.0",
     "webpack-bundle-analyzer": "^3.0.2",

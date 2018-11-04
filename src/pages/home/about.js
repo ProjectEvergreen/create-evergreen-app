@@ -1,7 +1,7 @@
 import { html, LitElement } from '@polymer/lit-element';
 import css from './layout.css';
 
-class HomePageComponent extends LitElement {
+class AboutPageComponent extends LitElement {
   render() {
     return html`
       <style>
@@ -9,10 +9,10 @@ class HomePageComponent extends LitElement {
       </style>
 
       <div class="container">
-        <h1>Home</h1>
+        <h1>About</h1>
       </div>
     `;
   }
 }
 
-customElements.define('home-page', HomePageComponent);
+customElements.define('about-page', AboutPageComponent);
