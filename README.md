@@ -16,7 +16,7 @@ Tasks to get you going working on this project:
 
 ## Basic Example
 
-Install following depencies:
+Install following dependencies:
 
 ```
 yarn add lit-redux-router lit-html @polymer/lit-element pwa-helpers redux
