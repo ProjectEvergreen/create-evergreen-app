@@ -1,0 +1,10 @@
+:host {
+  & div {
+    display: flex;
+    justify-content: center;
+  }
+
+  & ul {
+    list-style: none;
+  }
+}

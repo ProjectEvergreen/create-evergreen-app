@@ -1,0 +1,42 @@
+:host {
+  & nav {
+    display: inline-block;
+    background-color: green;
+    border: 1px solid black;
+    width: 100%;
+    position: relative;
+  }
+  & .container {
+    & .brand {
+      color: white;
+      display: block;
+    }
+    & ul {
+      margin: 0;
+      margin-left: auto;
+      & li {
+        float: left;
+        display: block;
+        & a {
+          font-weight: 600;
+          color: white;
+          text-decoration: none;
+          padding: 25px;
+          font-size: 18px;
+          display: block;
+          &:hover {
+            color: green;
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+  & .container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

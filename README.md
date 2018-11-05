@@ -1,117 +1,336 @@
-# create-evergreen-app
-[![GitHub release](https://img.shields.io/github/tag/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/tags)
-![CircleCI branch](https://img.shields.io/circleci/project/github/ProjectEvergreen/create-evergreen-app/master.svg?style=plastic)
-[![GitHub issues](https://img.shields.io/github/issues-raw/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/issues)
-[![GitHub issues](https://img.shields.io/github/issues-pr-raw/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/issues)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ProjectEvergreen/create-evergreen-app/master/LICENSE.md)
+# Create Blog With Evergeen and Strapi, Headless CMS Example
+
+- Requires Mongo already installed
 
 ## Overview
-A starter project for getting up and running with an evergreen web application development stack designed by, and for, today's [modern web](https://github.com/ProjectEvergreen/create-evergreen-app/wiki/Browser-Support-Matrix#evergreen-browsers).
-![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner.png)
 
-### Project Goals
-The goal of Project Evergreen is to march alongside the modern web and bring that to this repo so that both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
+![evergreen-strapi-example](./docs/screenshot.png)
 
-#### Acknowledgements
-This project is made by possible with the much appreciated existence of tools like:
-- [webpack](https://webpack.js.org/) v4
-- [LitElement](https://github.com/Polymer/lit-element)
-- [Babel](https://babeljs.io/) v7 / [PostCSS](https://github.com/postcss/postcss)
-- [Browserslist](https://github.com/browserslist/browserslist)
-- [WebComponents.org](https://www.webcomponents.org/)
+### Install Global Dependencies
 
-And of course, nods and kudos go out to the maintainers of [Create React App](https://github.com/facebook/create-react-app) (CRA) and Pascal Shlip (@thepassle) of [Create Lit App](https://github.com/thepassle/create-lit-app) for the inspiration.
-
-Thank you, to all of you!
-
-#### Under Development
-This repo and Project Evergreen itself are still young and maturing rapidly.  The Project Evergreen GitHub organization [project tracker](https://github.com/ProjectEvergreen/project-evergreen/projects) captures the high level goals and next steps, with plans to keep adding those lessons learned as features and improvements to this repo. 
-
-Immediate needs for this repo are:
-- Routing 
-- Route based code spliting + Lazy Loading 
-- Opt-in IE11 Support
-
-> 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
-
-## Getting Started
-> Installer assumes you have [`git`](https://git-scm.com/) on your system
-
-Make sure you have Node.js 8.x [installed](https://nodejs.org/) and then follow these steps to get up and running:
-```shell
-# 1) create a new evergreen app
-$ npx create-evergreen-app my-app
-$ cd my-app
-
-# 2) install dependencies
-$ npm install
-
-# or 
-
-$ yarn install
-
-# 3) Start developing!
-$ npm start 
-
-# or 
-
-$ yarn start
+```bash
+npm install -g create-evergreen-app strapi
 ```
 
-> 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki)!
+### Setup Project Directory
 
-## Usage
-To start developing, you can simply go ahead and edit and add files as you need in `src/`.  
-
-> ℹ️ Feel free to edit or delete any content / code related to Create Evergreen App (including README.md) to customize this repo to your own needs.
-
-### Development
-Automated tasks have been made available as **npm** scripts that you can run from the command line using `yarn` or `npm run`:
-- `develop` - To start a development server with live reload and file watching
-- `build` - Generate a production build of the app for deployment
-- `serve` - Locally serve a production build
-- `test` - Run unit tests in TDD mode (prepend with `NODE_ENV=production` for "single run" usage)
-- `start` - alias to the `develop` task
-
-e.g. to start developing, run
-```shell
-# yarn
-$ yarn develop
-
-or
-
-# npm
-$ npm run develop
+```bash
+mkdir blog
+cd blog
 ```
 
-### Package Management
-Your team may choose to use either **npm** or **Yarn**, just make sure to pick one and remove the other manager's lock file.  Make sure to update the lock file whenever adding / removing a package.
+## Strapi
 
-### Guides
-These are some guides related to configuring different parts of this application to customize it for your needs.
+### Create New Strapi API
 
-#### Folder Structure
-There is no right or wrong folder structure per se as with most decisions relating to technology, it's about finding the best tool for the job.  Pick the conventions that fit your team / project best.
+```bash
+strapi new api
+```
 
-That said, CEA does come with with a lightly opinionated structure in the _src/_ directory as one of the main goals of a good folder structure should be to assist in the finding of  files / code faster and being predicatable.  Here is some info on the approach presented / suggested in this repo:
-- _index.js_ - Main Entry point into the application (defined in _webpack.config.common.js_)
-- _index.html_ - Defines the HTML "shell" of the application.
-- _app/_ - The top level "app" component, that will be used to bootstrap the application.
-- _components/_ - Essentially all the custom elements for an app will go here, encapsulating all reusable UI logic.
-- _pages/_ - Routable states and / or views that users will navigate to within an application.
-- _services/_ - Utilities for making (RESTful) API calls, convenience "wrappers" around browser APIs (Web Storage), etc.  These generally don't interact with the DOM (that's what components are for).
+Follow prompt for Mongo Configuration. Enter DB Name, IP, User, Password, etc.
 
-> Unit tests are recommended to be kept side by side with the component / `class` / etc.  For integration and E2E tests, consider making a _test/_ directory alongside the _src/_ directory and put those tests there.
+```bash
+? Choose your main database: MongoDB
+? Database name: blog-api
+? Host: 127.0.0.1
+? +srv connection: false
+? Port (It will be ignored if you enable +srv): 27017
+? Username:
+? Password:
+? Authentication database (Maybe "admin" or blank):
+? Enable SSL connection: false
+```
 
-#### Setting Up (API) Proxies
-In _webpack.config.develop.js_ and _lws.config.js_ are sections for setting up proxies for routing requests, say to an API running in your development envrionment.  Edit the placeholders to match your particular needs.
+### Start Strapi
 
-#### CSS + Shadow DOM
-// TODO
+```
+cd api
+strapi start
+```
 
-#### Performance
-Performance is an important consideration for developing and maintaing any modern web application.  Out of the box, this project uses **webpack**'s [default settings for performance budgets](https://webpack.js.org/configuration/performance/) and will error when its thresholds are exceeded.  
+It should open http://localhost:1337/admin if it doesn't, visit that URL and setup your initial adminstraitor account.
 
-The goal of this project will be to support good code splitting and lazy loading strategies by default to allow apps to scale horizontally as more pages / features / dependencies get added.
+### Create Content Type
 
-To learn more about performance best practices for modern web application development, check out the [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki/Performance).
+1. Select Content Type Builder from sidebar.
+2. Click **+ Add Content Type** button near the top right
+3. In the popup modal, add the content type name: post leave the rest default
+4. Hit Save
+
+### Add Fields To Content Type
+
+1. Select the **+ Add New Field** blue button
+2. Create a String Field, with the name: title
+3. Click **+Add New Field**
+4. Create a Text Field, with the name: content
+5. Click **Advanced Settings** Tab, checkmark the **Display as a WYSIWYG** field
+6. Click **+Add New Field**
+7. Create a Media Field, with the name: image
+8. Click **+Add New Field**
+9. Create a Relation Field, change the left field name to: author
+10. Change the right field by click the title of the box and select "User(Users-Permissions)" from the dropdown menu
+11. Make sure you click the middle option that says "User has many Posts"
+12. Click **Continue**
+13. Finally, make sure you click **Save\*** at the top right.
+
+The server will restart and you will have to re-login.
+
+### Create Blog Posts
+
+On the top-left of the sidebar you should see a new content type called "Posts".
+
+1. Select Posts Content Type
+2. Click **+ Add New Post**
+3. Enter a title
+4. Enter some content
+5. Select yourself as the author, from the author dropdown menu
+6. Add an image
+7. Click **Save**
+
+Repeat as many times as you want
+
+### Set Roles & Permissions
+
+In order to actually get access to this content type through you API and onto your frontend you'll need to configure permissions
+
+1. Click **Roles & Permissions** from left sidebar
+2. Click **Public** row
+3. Under Permissions, select the **find** and **findone** fields
+4. On the right, under **Advanced Settings\*, select the dropdown and click **ratelimit\*\*
+5. Click **Save**
+
+### Enable GraphQL
+
+IN order to use GraphQL we need to install an additional plugin from the strapi marketplace
+
+1. Click **Marketplace** from the sidebar on the left side
+2. Click **Download** button underneath the GraphQL Plugin
+3. Wait a few moments for it to download, install, and reboot strapi.
+4. With the current version **3.0.0-alpha.14.4.0** of Strapi you may notice your content type disappeared after restart. This is a known bug. Simply logout(at the top), refresh the page and relogin and it should re-appear.
+
+You can now view the GraphQL playfround by visiting http://localhost:1337/graphql
+
+You can test your blog posts appear by running the following query:
+
+```
+query {
+  posts {
+    _id
+    title
+    content
+    image {
+      url
+    }
+  }
+}
+```
+
+If you're using the same version as me, you will see an error:
+
+```
+"message": "ID cannot represent value: { _bsontype: \"ObjectID\", id: <Buffer 5b e0 a5 06 62 3f c5 6d 28 d4 59 fc> }"
+```
+
+The fix is simple:
+
+```
+cd plugins/graphql
+npm install graphql@git://github.com/graphql/graphql-js.git#npm
+```
+
+Now rerun the query in the graphql playground and it should work as expected.
+
+## Evergreen
+
+### Create New Evergreen App
+
+In a new console run:
+
+```bash
+cd ..
+create-evergreen-app frontend
+cd frontend && npm install
+```
+
+### Install Strapi SDK
+
+```bash
+npm install --save strapi-sdk-javascript
+```
+
+### Add Query to app.js
+
+Modify the top of **src/app/app.js** to include the strapi SDK, apiUrl, as well as the lifecycle connectedCallback container the GraphQL blog post query
+
+```js
+import { html, LitElement } from '@polymer/lit-element';
+import css from './app.css';
+import '../components/header/header';
+import Strapi from 'strapi-sdk-javascript/build/main';
+const apiUrl = process.env.API_URL || 'http://localhost:1337';
+const strapi = new Strapi(apiUrl);
+
+class AppComponent extends LitElement {
+  static get properties() {
+    return {
+      posts: []
+    };
+  }
+  async connectedCallback() {
+    const response = await strapi.request('POST', '/graphql', {
+      data: {
+        query: `query {
+          posts {
+            _id
+            title
+            content
+            image {
+              url
+            }
+            author {
+              username
+            }
+          }
+        }`
+      }
+    });
+
+    this.posts = response.data.posts;
+  }
+  ...
+```
+
+Finally, we need to render the blog, continue modifying the **src/app/app.js** file to iterate through and display the blog posts:
+
+```js
+render() {
+    return html`
+      <style>
+        ${css}
+      </style>
+
+      <eve-header></eve-header>
+      <div>
+        <ul>
+          ${this.posts.map(post => html`
+            <li>
+              <h2>${post.title}</h2>
+              <p>By: ${post.author.username}</p>
+              <img src=${`${apiUrl}${post.image.url}`} width="500px" />
+              <p>${post.content}</p>
+            </li>
+          `)}
+        </ul>
+
+      </div>
+    `;
+  }
+```
+
+### Modify App Style
+
+Modify the **src/app/app.css** style so it looks better
+
+```css
+:host {
+  & div {
+    display: flex;
+    justify-content: center;
+  }
+
+  & ul {
+    list-style: none;
+  }
+}
+```
+
+By default the background is black, we need to change it to white so our blog is legible, modify the existing style in **src/index.html**
+
+```html
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+  </style>
+```
+
+### Add a better header
+
+Modify **src/components/header/header.js**
+
+```js
+import { html, LitElement } from '@polymer/lit-element';
+import css from './header.css';
+
+class HeaderComponent extends LitElement {
+  render() {
+    return html`      
+      <style>
+        ${css}
+      </style>
+
+        <nav>
+        <div class="container">
+          <div class="brand"><h1>Project Evergreen</h1></div>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/docs">Docs</a></li>
+          </ul>
+        </div>
+        </nav>
+    `;
+  }
+}
+
+customElements.define('eve-header', HeaderComponent);
+```
+
+Final step, modify the header style **src/components/header/header.css**
+
+```css
+:host {
+  & nav {
+    display: inline-block;
+    background-color: green;
+    border: 1px solid black;
+    width: 100%;
+    position: relative;
+  }
+  & .container {
+    & .brand {
+      color: white;
+      display: block;
+    }
+    & ul {
+      margin: 0;
+      margin-left: auto;
+      & li {
+        float: left;
+        display: block;
+        & a {
+          font-weight: 600;
+          color: white;
+          text-decoration: none;
+          padding: 25px;
+          font-size: 18px;
+          display: block;
+          &:hover {
+            color: green;
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+  & .container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+```
