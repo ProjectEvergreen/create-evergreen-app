@@ -71,7 +71,7 @@ It should open http://localhost:1337/admin if it doesn't, visit that URL and set
 10. Change the right field by click the title of the box and select "User(Users-Permissions)" from the dropdown menu
 11. Make sure you click the middle option that says "User has many Posts"
 12. Click **Continue**
-13. Finally, make sure you click **Save\*** at the top right.
+13. Finally, make sure you click **Save** at the top right.
 
 The server will restart and you will have to re-login.
 
@@ -96,7 +96,7 @@ In order to actually get access to this content type through you API and onto yo
 1. Click **Roles & Permissions** from left sidebar
 2. Click **Public** row
 3. Under Permissions, select the **find** and **findone** fields
-4. On the right, under **Advanced Settings\*, select the dropdown and click **ratelimit\*\*
+4. On the right, under **Advanced Settings**, select the dropdown and click **ratelimit**
 5. Click **Save**
 
 ### Enable GraphQL
@@ -108,7 +108,7 @@ IN order to use GraphQL we need to install an additional plugin from the strapi 
 3. Wait a few moments for it to download, install, and reboot strapi.
 4. With the current version **3.0.0-alpha.14.4.0** of Strapi you may notice your content type disappeared after restart. This is a known bug. Simply logout(at the top), refresh the page and relogin and it should re-appear.
 
-You can now view the GraphQL playfround by visiting http://localhost:1337/graphql
+You can now view the GraphQL playground by visiting http://localhost:1337/graphql
 
 You can test your blog posts appear by running the following query:
 
