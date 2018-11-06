@@ -17,20 +17,24 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: Debug environment
+          command: node -v && npm -v && yarn -v
+
+      - run:
           name: Install Project Dependencies
-          command: yarn install
+          command: npm install
 
       - run:
           name: Run Linter
-          command: yarn lint
+          command: npm run lint
 
       - run:
           name: Run Unit Tests
-          command: export NODE_ENV=production && yarn test
+          command: export NODE_ENV=production && npm run test
 
       - run:
           name: Execute The Build
-          command: yarn build
+          command: npm run build
 
       - run:
           name: CEA Install Self Test
@@ -41,3 +45,12 @@ jobs:
       - run:
           name: Self Lint of CEA Install Script
           command: ./node_modules/.bin/eslint ./tasks/*.js
+
+      # Sanity test yarn install and tasks
+      - run:
+          name: Yarn install test
+          command: rm -rf ./node_modules && yarn install
+
+      - run:
+          name: Yarn tasks test
+          command: export NODE_ENV=production && yarn lint && yarn build && yarn test
