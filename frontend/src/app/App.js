@@ -1,6 +1,9 @@
 import { html, LitElement } from '@polymer/lit-element';
-import css from './app.css';
-import '../components/header/header';
+import css from './App.css';
+import '../components/Header/Header';
+import '../components/Container/Container';
+import '../components/PostList/PostList';
+
 import Strapi from 'strapi-sdk-javascript/build/main';
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
@@ -30,7 +33,7 @@ class AppComponent extends LitElement {
       }
     });
 
-    this.posts = response.data.posts;
+    this.posts = response.data;
   }
 
   render() {
@@ -41,19 +44,11 @@ class AppComponent extends LitElement {
       </style>
       
       <eve-header></eve-header>
-      <div>
-        <ul>
-          ${this.posts.map(post => html`
-            <li>
-              <h2>${post.title}</h2>
-              <p>By: ${post.author.username}</p>
-              <img src=${`${apiUrl}${post.image.url}`} width="500px" />
-              <p>${post.content}</p>
-            </li>
-          `)}
-        </ul>
-
-      </div>
+      <eve-container>
+        ${this.posts && html`
+          <post-list name='test' .posts=${this.posts} apiUrl=${apiUrl}></post-list>
+        `}
+      </eve-container>
     `;
   }
 }
