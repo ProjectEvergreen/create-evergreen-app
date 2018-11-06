@@ -17,7 +17,7 @@ class PostList extends LitElement {
         ${css}
     </style>
     <ul>
-        ${this.posts.posts.map(post => html`
+        ${this.posts.map(post => html`
             <eve-post .post=${post} apiUrl=${this.apiUrl}></eve-post>
         `)}
     </ul>

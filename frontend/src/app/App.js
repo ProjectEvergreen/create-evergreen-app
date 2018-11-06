@@ -33,7 +33,7 @@ class AppComponent extends LitElement {
       }
     });
 
-    this.posts = response.data;
+    this.posts = response.data.posts;
   }
 
   render() {
