@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: 10px;
+  -webkit-box-shadow: 0 2rem 5rem 0 rgba(77, 77, 77, 0.3);
+  box-shadow: 0 2rem 5rem 0 rgba(77, 77, 77, 0.3);
+  border-radius: 0.5rem;
+  color: #4d4d4d;
+  background-color: #fff;
+  margin: 10px;
+}

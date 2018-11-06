@@ -3,6 +3,7 @@ import css from './App.css';
 import '../components/Header/Header';
 import '../components/Container/Container';
 import '../components/PostList/PostList';
+import '../components/Footer/Footer';
 
 import Strapi from 'strapi-sdk-javascript/build/main';
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -49,6 +50,7 @@ class AppComponent extends LitElement {
           <post-list name='test' .posts=${this.posts} apiUrl=${apiUrl}></post-list>
         `}
       </eve-container>
+      <eve-footer></eve-footer
     `;
   }
 }

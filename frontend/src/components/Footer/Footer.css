@@ -1,0 +1,16 @@
+:host {
+  & footer {
+    width: 100%;
+    background-color: #121512;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    & a {
+      text-decoration: none;
+      color: green;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
