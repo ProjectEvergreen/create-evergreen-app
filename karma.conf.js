@@ -25,7 +25,7 @@ module.exports = function (config) {
     basePath: '',
     files: [
       { pattern: './karma-test-shim.js', watched: false }
-      // uncomment these two for
+      // uncomment these two for Firefox, Edge support
       // { pattern: './node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js', watched: false },
       // { pattern: './node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js', watched: false }
     ],
