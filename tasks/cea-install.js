@@ -1,33 +1,31 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-const execSync = require('child_process').execSync;
 const spawn = require('cross-spawn');
 const path = require('path');
-
-let TARGET_DIR;
-const CLEANUP_DIRS = [
-  'docs',
-  '.circleci',
-  '.github',
-  '.git',
-  '.npmignore',
-  'tasks'
-];
+const fs = require('fs-extra');
+const os = require('os');
 
 console.log('-------------------------------------------------------');
 console.log('Welcome to Create Evergreen App ♻️');
 console.log('-------------------------------------------------------');
 
-const checkTargetDir = appDir => {
-  if (appDir) {
-    TARGET_DIR = appDir;
-  } else {
+const checkTargetDir = async appDir => {
+  if (!appDir) {
     console.error(
       'Missing Project Directory! Please specifiy the application name e.g. create-evergreen-app my-app'
     );
-    process.exit(1);
+    process.exit(); // eslint-disable-line no-process-exit
   }
+
+  const targetExists = await fs.pathExists(appDir);
+
+  if (targetExists) {
+    // should we warn about this first?
+    await fs.remove(appDir);
+  }
+  await fs.ensureDir(appDir);
+  return appDir;
 };
 
 function install() {
@@ -50,28 +48,56 @@ function install() {
 
 const run = async () => {
   try {
-    // check params
-    checkTargetDir(process.argv[2]);
+    // Check params
+    console.log('Preparing project directory...');
+    const TARGET_DIR = await checkTargetDir(process.argv[2]);
 
-    // overwrite existing directory or not?
-    execSync(`rm -rf ${TARGET_DIR}`);
+    // Create new package.json
+    const templatePkg = require(path.join(__dirname, '..', 'package.json'));
+    const appPkg = {
+      name: TARGET_DIR,
+      version: '0.1.0',
+      private: true
+    };
 
-    // clone CEA from github
-    execSync(
-      `git clone https://github.com/ProjectEvergreen/create-evergreen-app --branch release ${TARGET_DIR}`
+    appPkg.scripts = templatePkg.scripts;
+    appPkg.devDependencies = templatePkg.devDependencies;
+    appPkg.dependencies = templatePkg.dependencies;
+    appPkg.eslintConfig = templatePkg.eslintConfig;
+
+    await fs.writeFileSync(
+      path.join(TARGET_DIR, 'package.json'),
+      JSON.stringify(appPkg, null, 2) + os.EOL
     );
-    // clean up the new repo directory
-    CLEANUP_DIRS.forEach(directory => {
-      execSync(`rm -rf ${TARGET_DIR}/${directory}`);
-    });
+
+    // Copy template files to target
+    console.log('Copying project files...');
+    const copyDirs = ['src', 'docs', 'config'];
+
+    await Promise.all(
+      copyDirs.map(async directory => {
+        const templateDir = path.join(__dirname, '..', directory);
+
+        if (await fs.existsSync(templateDir)) {
+          return await fs.copySync(
+            templateDir,
+            path.join(TARGET_DIR, directory)
+          );
+        } else {
+          console.error("Directory doesn't exist! :" + templateDir);
+          process.exit(); // eslint-disable-line no-process-exit
+        }
+      })
+    );
+
     // change directory to new app directory
     process.chdir(path.resolve(process.cwd(), TARGET_DIR));
-    console.log('Installing dependencies...');
+    console.log('Installing project dependencies...');
     await install();
     console.log('-------------------------------------------------------');
     console.log('Success, your project is ready to go!');
     console.log(`Just run: cd ${TARGET_DIR}`);
-    console.log('And then: npm install && npm start (or use yarn)');
+    console.log('And then launch your project with: npm run develop');
     console.log('-------------------------------------------------------');
   } catch (err) {
     console.error(err);
