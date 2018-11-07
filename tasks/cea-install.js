@@ -54,16 +54,22 @@ const run = async () => {
 
     // Create new package.json
     const templatePkg = require(path.join(__dirname, '..', 'package.json'));
+    const {
+      scripts,
+      devDependencies,
+      dependencies,
+      eslintConfig
+    } = templatePkg;
+
     const appPkg = {
       name: TARGET_DIR,
-      version: '0.1.0',
-      private: true
+      version: '0.0.1',
+      private: true,
+      scripts: scripts,
+      devDependencies: devDependencies,
+      dependencies: dependencies,
+      eslintConfig: eslintConfig
     };
-
-    appPkg.scripts = templatePkg.scripts;
-    appPkg.devDependencies = templatePkg.devDependencies;
-    appPkg.dependencies = templatePkg.dependencies;
-    appPkg.eslintConfig = templatePkg.eslintConfig;
 
     await fs.writeFileSync(
       path.join(TARGET_DIR, 'package.json'),
@@ -72,10 +78,10 @@ const run = async () => {
 
     // Copy template files to target
     console.log('Copying project files...');
-    const copyDirs = ['src', 'docs', 'config'];
+    const copyFiles = ['src', 'docs', 'config', 'README.md', '.gitignore'];
 
     await Promise.all(
-      copyDirs.map(async directory => {
+      copyFiles.map(async directory => {
         const templateDir = path.join(__dirname, '..', directory);
 
         if (await fs.existsSync(templateDir)) {
