@@ -26,7 +26,7 @@ const checkTargetDir = appDir => {
     console.error(
       'Missing Project Directory! Please specifiy the application name e.g. create-evergreen-app my-app'
     );
-    process.exit(1);
+    process.exit(1); // eslint-disable-line no-process-exit
   }
 };
 
