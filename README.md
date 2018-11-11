@@ -41,16 +41,8 @@ Make sure you have Node.js 8.x [installed](https://nodejs.org/) and then follow 
 ```shell
 # 1) create a new evergreen app
 $ npx create-evergreen-app my-app
-$ cd my-app
 
-# 2) install dependencies
-$ npm install
-
-# or 
-
-$ yarn install
-
-# 3) Start developing!
+# 2) Start developing!
 $ npm start 
 
 # or 
