@@ -22,7 +22,7 @@ jobs:
 
       - run:
           name: Install Project Dependencies
-          command: npm install
+          command: npm cache verfiy && npm install
 
       # tasks this was part of the lint npm task but was moved out
       # since tasks/* isn't part of the npx install and so lint would fail on the user's machine
