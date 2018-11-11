@@ -60,22 +60,28 @@ const run = async () => {
     execSync(
       `git clone https://github.com/ProjectEvergreen/create-evergreen-app --branch release ${TARGET_DIR}`
     );
+
     // clean up the new repo directory
     CLEANUP_DIRS.forEach(directory => {
       execSync(`rm -rf ${TARGET_DIR}/${directory}`);
     });
+
     // change directory to new app directory
     process.chdir(path.resolve(process.cwd(), TARGET_DIR));
+
+    // install dependencies for the user
     console.log('Installing dependencies...');
     await install();
+
+    // success!
     console.log('-------------------------------------------------------');
     console.log('Success, your project is ready to go!');
-    console.log(`Just run: cd ${TARGET_DIR}`);
-    console.log('And then: npm install && npm start (or use yarn)');
+    console.log('Just run: npm start (or use yarn)');
     console.log('-------------------------------------------------------');
   } catch (err) {
     console.error(err);
   }
+
   process.exit(); // eslint-disable-line no-process-exit
 };
 
