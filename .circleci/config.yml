@@ -28,7 +28,7 @@ jobs:
       # since tasks/* isn't part of the npx install and so lint would fail on the user's machine
       - run:
           name: Run Linter
-          command: npm run lint && ./node_modules/.bin/eslint \"./tasks/*.js\"
+          command: npm run lint && ./node_modules/.bin/eslint "./tasks/*.js"
 
       - run:
           name: Run Unit Tests
