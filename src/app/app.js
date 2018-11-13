@@ -9,10 +9,14 @@ class AppComponent extends LitElement {
       <style>
         ${css}
       </style>
-      
+
       <div>
+        <section>
           <eve-header></eve-header>
+        </section>
+        <section>
           <eve-home-page></eve-home-page>
+        </section>
       </div>
     `;
   }
