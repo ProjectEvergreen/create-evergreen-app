@@ -1,35 +1,38 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-const execSync = require('child_process').execSync;
 const spawn = require('cross-spawn');
 const path = require('path');
+const fs = require('fs-extra');
+const os = require('os');
 
 let TARGET_DIR;
-const CLEANUP_DIRS = [
-  'docs',
-  '.circleci',
-  '.github',
-  '.git',
-  '.npmignore',
-  'tasks'
-];
 
 console.log('-------------------------------------------------------');
 console.log('Welcome to Create Evergreen App ♻️');
 console.log('-------------------------------------------------------');
 
-const checkTargetDir = appDir => {
-  if (appDir) {
-    TARGET_DIR = appDir;
-  } else {
+// Check target application directory/name is included in args
+// remove directory if present, create new target directory
+const checkTargetDir = async appDir => {
+  if (!appDir) {
     console.error(
       'Missing Project Directory! Please specifiy the application name e.g. create-evergreen-app my-app'
     );
-    process.exit(1); // eslint-disable-line no-process-exit
+    process.exit(); // eslint-disable-line no-process-exit
   }
+
+  const targetExists = await fs.pathExists(appDir);
+
+  if (targetExists) {
+    // should we warn about this first?
+    await fs.remove(appDir);
+  }
+  await fs.ensureDir(appDir);
+  return appDir;
 };
 
+// Install npm dependencies
 function install() {
   return new Promise((resolve, reject) => {
     const command = 'npm';
@@ -48,35 +51,82 @@ function install() {
   });
 }
 
+// Create new package.json
+const npmInit = async () => {
+  const templatePkg = require(path.join(__dirname, '..', 'package.json'));
+  const appPkg = {
+    name: TARGET_DIR,
+    version: '0.1.0',
+    private: true
+  };
+
+  appPkg.scripts = templatePkg.scripts;
+  appPkg.devDependencies = templatePkg.devDependencies;
+  appPkg.dependencies = templatePkg.dependencies;
+  appPkg.eslintConfig = templatePkg.eslintConfig;
+  await fs.writeFileSync(
+    path.join(TARGET_DIR, 'package.json'),
+    JSON.stringify(appPkg, null, 2) + os.EOL
+  );
+};
+
+// Copy template files to target
+const srcInit = async () => {
+  const copyDirs = [
+    'src',
+    '.editorconfig',
+    '.eslintrc',
+    '.gitignore',
+    'babel.config.js',
+    'karma-test-shim.js',
+    'karma.conf.js',
+    'lws.config.js',
+    'postcss.config.js',
+    'README.md',
+    'webpack.config.common.js',
+    'webpack.config.develop.js',
+    'webpack.config.prod.js'
+  ];
+
+  return await Promise.all(
+    copyDirs.map(async directory => {
+      const templateDir = path.join(__dirname, '..', directory);
+
+      if (await fs.existsSync(templateDir)) {
+        return await fs.copySync(
+          templateDir,
+          path.join(TARGET_DIR, directory)
+        );
+      } else {
+        console.error("Directory doesn't exist! :" + templateDir);
+        process.exit(); // eslint-disable-line no-process-exit
+      }
+    })
+  );
+};
+
 const run = async () => {
   try {
-    // check params
-    checkTargetDir(process.argv[2]);
+    console.log('Preparing project directory...');
+    TARGET_DIR = await checkTargetDir(process.argv[2]);
 
-    // overwrite existing directory or not?
-    execSync(`rm -rf ${TARGET_DIR}`);
+    console.log('Initializing npm dependencies...');
+    npmInit();
 
-    // clone CEA from github
-    execSync(
-      `git clone https://github.com/ProjectEvergreen/create-evergreen-app --branch release ${TARGET_DIR}`
-    );
+    console.log('Copying project files...');
+    await srcInit();
 
-    // clean up the new repo directory
-    CLEANUP_DIRS.forEach(directory => {
-      execSync(`rm -rf ${TARGET_DIR}/${directory}`);
-    });
-
-    // change directory to new app directory
+    // change directory to target directory
     process.chdir(path.resolve(process.cwd(), TARGET_DIR));
 
-    // install dependencies for the user
-    console.log('Installing dependencies...');
+    console.log('Installing project dependencies...');
     await install();
 
     // success!
     console.log('-------------------------------------------------------');
     console.log('Success, your project is ready to go!');
-    console.log('Just run: npm start (or use yarn)');
+    console.log(`Just run: cd ${TARGET_DIR}`);
+    console.log('And then launch your project with: npm start');
     console.log('-------------------------------------------------------');
   } catch (err) {
     console.error(err);
