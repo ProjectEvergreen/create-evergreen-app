@@ -19,7 +19,7 @@ const checkTargetDir = async appDir => {
     console.error(
       'Missing Project Directory! Please specifiy the application name e.g. create-evergreen-app my-app'
     );
-    process.exit(); // eslint-disable-line no-process-exit
+    process.exit(1); // eslint-disable-line no-process-exit
   }
 
   const targetExists = await fs.pathExists(appDir);
@@ -61,9 +61,9 @@ const npmInit = async () => {
   };
 
   appPkg.scripts = templatePkg.scripts;
-  appPkg.devDependencies = templatePkg.devDependencies;
   appPkg.dependencies = templatePkg.dependencies;
-  appPkg.eslintConfig = templatePkg.eslintConfig;
+  appPkg.devDependencies = templatePkg.devDependencies;
+
   await fs.writeFileSync(
     path.join(TARGET_DIR, 'package.json'),
     JSON.stringify(appPkg, null, 2) + os.EOL
@@ -90,16 +90,16 @@ const srcInit = async () => {
 
   return await Promise.all(
     copyDirs.map(async directory => {
-      const templateDir = path.join(__dirname, '..', directory);
+      const initDir = path.join(__dirname, '..', directory);
 
-      if (await fs.existsSync(templateDir)) {
+      if (await fs.existsSync(initDir)) {
         return await fs.copySync(
-          templateDir,
+          initDir,
           path.join(TARGET_DIR, directory)
         );
       } else {
         console.error("Directory doesn't exist! :" + templateDir);
-        process.exit(); // eslint-disable-line no-process-exit
+        process.exit(1); // eslint-disable-line no-process-exit
       }
     })
   );
