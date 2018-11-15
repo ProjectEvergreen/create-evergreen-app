@@ -39,16 +39,13 @@ Immediate needs for this repo are:
 
 Make sure you have Node.js 8.x [installed](https://nodejs.org/) and then follow these steps to get up and running:
 ```shell
-# 1) Install a create-evergreen-app globally
-$ npm install -g create-evergreen-app
+# 1) Create new evergreen app
+$ npx create-evergreen-app my-app
 
-# 2) Create new evergreen app
-$ create-evergreen-app my-app
-
-# 3) directory
+# 2) Change Directory
 $ cd my-app
 
-# 4) Start developing!
+# 3) Start developing!
 $ npm start
 
 # or
