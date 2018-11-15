@@ -25,11 +25,11 @@ And of course, nods and kudos go out to the maintainers of [Create React App](ht
 Thank you, to all of you!
 
 #### Under Development
-This repo and Project Evergreen itself are still young and maturing rapidly.  The Project Evergreen GitHub organization [project tracker](https://github.com/ProjectEvergreen/project-evergreen/projects) captures the high level goals and next steps, with plans to keep adding those lessons learned as features and improvements to this repo. 
+This repo and Project Evergreen itself are still young and maturing rapidly.  The Project Evergreen GitHub organization [project tracker](https://github.com/ProjectEvergreen/project-evergreen/projects) captures the high level goals and next steps, with plans to keep adding those lessons learned as features and improvements to this repo.
 
 Immediate needs for this repo are:
-- Routing 
-- Route based code spliting + Lazy Loading 
+- Routing
+- Route based code spliting + Lazy Loading
 - Opt-in IE11 Support
 
 > 🙏 Please feel free to contribute, we are always looking forward to meeting like minded developers to collaborate with!
@@ -39,13 +39,19 @@ Immediate needs for this repo are:
 
 Make sure you have Node.js 8.x [installed](https://nodejs.org/) and then follow these steps to get up and running:
 ```shell
-# 1) create a new evergreen app
-$ npx create-evergreen-app my-app
+# 1) Install a create-evergreen-app globally
+$ npm install -g create-evergreen-app
 
-# 2) Start developing!
-$ npm start 
+# 2) Create new evergreen app
+$ create-evergreen-app my-app
 
-# or 
+# 3) directory
+$ cd my-app
+
+# 4) Start developing!
+$ npm start
+
+# or
 
 $ yarn start
 ```
@@ -53,7 +59,7 @@ $ yarn start
 > 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki)!
 
 ## Usage
-To start developing, you can simply go ahead and edit and add files as you need in `src/`.  
+To start developing, you can simply go ahead and edit and add files as you need in `src/`.
 
 > ℹ️ Feel free to edit or delete any content / code related to Create Evergreen App (including README.md) to customize this repo to your own needs.
 
@@ -102,7 +108,7 @@ In _webpack.config.develop.js_ and _lws.config.js_ are sections for setting up p
 // TODO
 
 #### Performance
-Performance is an important consideration for developing and maintaing any modern web application.  Out of the box, this project uses **webpack**'s [default settings for performance budgets](https://webpack.js.org/configuration/performance/) and will error when its thresholds are exceeded.  
+Performance is an important consideration for developing and maintaing any modern web application.  Out of the box, this project uses **webpack**'s [default settings for performance budgets](https://webpack.js.org/configuration/performance/) and will error when its thresholds are exceeded.
 
 The goal of this project will be to support good code splitting and lazy loading strategies by default to allow apps to scale horizontally as more pages / features / dependencies get added.
 
