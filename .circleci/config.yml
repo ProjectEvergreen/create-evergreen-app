@@ -18,7 +18,7 @@ jobs:
 
       - run:
           name: Upgrade npm environment
-          command: npm -i npm
+          command: npm i npm
 
       - run:
           name: Debug environment
