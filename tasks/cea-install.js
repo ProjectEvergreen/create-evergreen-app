@@ -98,7 +98,7 @@ const srcInit = async () => {
           path.join(TARGET_DIR, directory)
         );
       } else {
-        console.error("Directory doesn't exist! :" + templateDir);
+        console.error("Directory doesn't exist! :" + initDir);
         process.exit(1); // eslint-disable-line no-process-exit
       }
     })
