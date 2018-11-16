@@ -17,10 +17,6 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: Upgrade npm environment
-          command: npm install -g npm@latest
-
-      - run:
           name: Debug environment
           command: node -v && npm -v && yarn -v
 
