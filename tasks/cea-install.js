@@ -78,6 +78,7 @@ const srcInit = async () => {
     '.editorconfig',
     '.eslintrc',
     '.gitignore',
+    '.gitattributes',
     'yarn.lock',
     'package-lock.json',
     'babel.config.js',
