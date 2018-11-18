@@ -51,6 +51,13 @@ $ npm start
 $ yarn start
 ```
 
+You can also clone the repo from GitHub
+```shell
+$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
+$ cd my-app && npm install # or yarn install
+$ npm start # or yarn start
+```
+
 > 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki)!
 
 ## Usage
