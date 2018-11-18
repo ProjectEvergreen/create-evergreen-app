@@ -38,7 +38,7 @@ Immediate needs for this repo are:
 Make sure you have a LTS version of [Node.js installed](https://nodejs.org/) and then follow these steps to get up and running:
 ```shell
 # 1) Create new evergreen app
-$ npx create-evergreen-app my-app
+$ npx -D create-evergreen-app my-app
 
 # 2) Change Directory
 $ cd my-app

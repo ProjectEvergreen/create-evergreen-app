@@ -77,6 +77,8 @@ const srcInit = async () => {
     '.editorconfig',
     '.eslintrc',
     '.gitignore',
+    'yarn.lock',
+    'package-lock.json',
     'babel.config.js',
     'karma-test-shim.js',
     'karma.conf.js',
