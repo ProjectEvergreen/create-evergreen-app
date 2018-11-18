@@ -1,5 +1,7 @@
 :host {
-
-  color: #ffffff;
-
+  & p {
+    color: #3c6919;
+    font-size: 1.75rem;
+    margin: 5px;
+  }
 }

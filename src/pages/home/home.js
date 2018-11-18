@@ -10,9 +10,7 @@ class HomePageComponent extends LitElement {
       </style>
 
       <div>
-
         <p>To get started, edit <code>src/pages/home/home.js</code>!</p>
-      
       </div>
     `;
   }

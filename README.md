@@ -7,7 +7,7 @@
 
 ## Overview
 A starter project for getting up and running with an evergreen web application development stack designed by, and for, today's [modern web](https://github.com/ProjectEvergreen/create-evergreen-app/wiki/Browser-Support-Matrix#evergreen-browsers).
-![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner.png)
+![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner-0.4.0.png)
 
 ### Project Goals
 The goal of Project Evergreen is to march alongside the modern web and bring that to this repo so that both developers and users can benefit.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
