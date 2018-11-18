@@ -74,6 +74,7 @@ const npmInit = async () => {
 const srcInit = async () => {
   const copyDirs = [
     'src',
+    '.browserslistrc',
     '.editorconfig',
     '.eslintrc',
     '.gitignore',
