@@ -38,25 +38,6 @@ const checkTargetDir = async appDir => {
   return appDir;
 };
 
-// Install npm dependencies
-function install() {
-  return new Promise((resolve, reject) => {
-    const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
-    const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
-    const child = spawn(command, args, { stdio: 'inherit' });
-
-    child.on('close', code => {
-      if (code !== 0) {
-        reject({
-          command: `${command} ${args.join(' ')}`
-        });
-        return;
-      }
-      resolve();
-    });
-  });
-}
-
 // Create new package.json
 const npmInit = async () => {
   const templatePkg = require(path.join(__dirname, '..', 'package.json'));
@@ -78,50 +59,49 @@ const npmInit = async () => {
 
 // Copy root and src files to target directory
 const srcInit = async () => {
-  const rootFiles = [
-    '.browserslistrc',
-    '.editorconfig',
-    '.eslintrc',
-    // '.gitignore',
-    '.gitattributes',
-    'yarn.lock',
-    'package-lock.json',
-    'babel.config.js',
-    'karma-test-shim.js',
-    'karma.conf.js',
-    'lws.config.js',
-    'postcss.config.js',
-    'README.md',
-    'webpack.config.common.js',
-    'webpack.config.develop.js',
-    'webpack.config.prod.js'
-  ];
-
-  const sourceFiles = [
-    'src'
-  ];
+  const copyBlacklist = ['tasks/'];
+  // TODO .gitignore missing https://github.com/ProjectEvergreen/create-evergreen-app/issues/59
+  const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
+  const files = packageFiles.filter((file) => {
+    if (copyBlacklist.indexOf(file) < 0) {
+      return file;
+    }
+  });
 
   return await Promise.all(
-    rootFiles.map(async fileName => {
-      const resolvedFilePath = path.join(__dirname, '..', fileName);
+    files.map(async file => {
+      const resolvedPath = path.join(__dirname, '..', file);
 
-      if (await fs.existsSync(resolvedFilePath)) {
+      if (fs.lstatSync(resolvedPath).isDirectory()) {
+        return await copyFolder(resolvedPath, TARGET_DIR);
+      } else if (await fs.existsSync(resolvedPath)) {
         return await fs.copyFileSync(
-          resolvedFilePath,
-          path.join(TARGET_DIR, fileName)
+          resolvedPath,
+          path.join(TARGET_DIR, file)
         );
-      } else {
-        console.error(`File doesn't exist! : ${resolvedFilePath}`);
-        process.exit(1); // eslint-disable-line no-process-exit
       }
-    }),
-    sourceFiles.map(async directory => {
-      const resolvedDirectoryPath = path.join(__dirname, '..', directory);
-
-      await copyFolder(resolvedDirectoryPath, TARGET_DIR);
     })
   );
 };
+
+// Install npm dependencies
+function install() {
+  return new Promise((resolve, reject) => {
+    const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
+    const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
+    const process = spawn(command, args, { stdio: 'inherit' });
+
+    process.on('close', code => {
+      if (code !== 0) {
+        reject({
+          command: `${command} ${args.join(' ')}`
+        });
+        return;
+      }
+      resolve();
+    });
+  });
+}
 
 const run = async () => {
   try {
