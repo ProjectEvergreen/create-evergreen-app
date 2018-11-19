@@ -59,7 +59,7 @@ const npmInit = async () => {
 
 // Copy root and src files to target directory
 const srcInit = async () => {
-  const copyBlacklist = ['tasks/'];
+  const copyBlacklist = ['tasks/', '.gitignore'];
   const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
   const files = packageFiles.filter((file) => {
     if (copyBlacklist.indexOf(file) < 0) {
@@ -85,17 +85,18 @@ const srcInit = async () => {
   );
 };
 
-// Create the missing gitignore because npx wont copy it
+// Create the missing gitignore because npm won't publish it https://docs.npmjs.com/files/package.json#files
 const createGitIgnore = () => {
   return new Promise((resolve, reject) => {
-    var stream = fs.createWriteStream('.gitignore');
+
+    const resolvedPath = path.join(TARGET_DIR, '.gitignore')
+    const stream = fs.createWriteStream(resolvedPath);
+    const patterns = ['*DS_Store', '*.log', 'node_modules/', 'public/', 'reports/'];
 
     stream.once('open', () => {
-      stream.write('*DS_Store\n');
-      stream.write('*.log\n');
-      stream.write('node_modules/\n');
-      stream.write('public/\n');
-      stream.write('reports/\n');
+      patterns.forEach(pattern => {
+        stream.write(`${pattern}\n`)
+      })
       stream.end();
     });
     stream.once('close', () => {
@@ -108,7 +109,7 @@ const createGitIgnore = () => {
 };
 
 // Install npm dependencies
-function install() {
+const install = () => {
   return new Promise((resolve, reject) => {
     const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
     const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
