@@ -1,6 +1,6 @@
 {
   "name": "create-evergreen-app",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Create an evergreen web application with no build configuration",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
