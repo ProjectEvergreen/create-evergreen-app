@@ -88,7 +88,8 @@ const srcInit = async () => {
 // Create the missing gitignore because npx wont copy it
 const createGitIgnore = () => {
   return new Promise((resolve, reject) => {
-    var stream = fs.createWriteStream(".gitignore");
+    var stream = fs.createWriteStream('.gitignore');
+
     stream.once('open', () => {
       stream.write('*DS_Store\n');
       stream.write('*.log\n');
