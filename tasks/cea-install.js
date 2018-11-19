@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-// THESE SCRIPTS SHOULD ONLY USE NATIVE NODE.JS APIs, no packages from NPM
+// THIS SCRIPT SHOULD ONLY USE NATIVE NODE.JS APIs, NO PACKAGES FROM NPM ALLOWED
 const copyFolderRecursiveSync = require('./utils');
 const fs = require('fs');
 const os = require('os');
@@ -15,7 +15,7 @@ console.log('Welcome to Create Evergreen App ♻️');
 console.log('-------------------------------------------------------');
 
 // Check target application directory/name is included in args
-// remove directory if present, create new target directory
+// warn if directory is present, else create new target directory
 const checkTargetDir = async appDir => {
   if (!appDir) {
     console.error(
@@ -41,7 +41,7 @@ const checkTargetDir = async appDir => {
 // Install npm dependencies
 function install() {
   return new Promise((resolve, reject) => {
-    const command = 'npm';
+    const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
     const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
     const child = spawn(command, args, { stdio: 'inherit' });
 
@@ -105,8 +105,6 @@ const srcInit = async () => {
     rootFiles.map(async fileName => {
       const resolvedFilePath = path.join(__dirname, '..', fileName);
 
-      console.log('resolvedFilePath', resolvedFilePath);
-
       if (await fs.existsSync(resolvedFilePath)) {
         return await fs.copyFileSync(
           resolvedFilePath,
@@ -120,7 +118,6 @@ const srcInit = async () => {
     sourceFiles.map(async directory => {
       const resolvedDirectoryPath = path.join(__dirname, '..', directory);
 
-      console.log('resolvedDirectoryPath', resolvedDirectoryPath);
       await copyFolderRecursiveSync(resolvedDirectoryPath, TARGET_DIR);
     })
   );

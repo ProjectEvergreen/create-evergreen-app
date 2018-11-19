@@ -1,7 +1,8 @@
-// https://stackoverflow.com/a/26038979
+// THIS SCRIPT SHOULD ONLY USE NATIVE NODE.JS APIs, NO PACKAGES FROM NPM ALLOWED
 const fs = require('fs');
 const path = require('path');
 
+// https://stackoverflow.com/a/26038979
 function copyFileSync(source, target) {
   let targetFile = target;
 
