@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-const { spawn } = require('child_process');
-const path = require('path');
+// THESE SCRIPTS SHOULD ONLY USE NATIVE NODE.JS APIs, no packages from NPM
+const copyFolderRecursiveSync = require('./utils');
 const fs = require('fs');
 const os = require('os');
+const path = require('path');
+const { spawn } = require('child_process');
 
 let TARGET_DIR;
 
@@ -23,9 +25,6 @@ const checkTargetDir = async appDir => {
   }
 
   const targetExists = await fs.existsSync(appDir);
-  
-  console.log('appDir', appDir);
-  console.log('targetExists', targetExists);
 
   if (targetExists) {
     console.error(
@@ -77,9 +76,9 @@ const npmInit = async () => {
   );
 };
 
-// Copy template files to target
+// Copy root and src files to target directory
 const srcInit = async () => {
-  const sourceFiles = [
+  const rootFiles = [
     '.browserslistrc',
     '.editorconfig',
     '.eslintrc',
@@ -98,8 +97,12 @@ const srcInit = async () => {
     'webpack.config.prod.js'
   ];
 
+  const sourceFiles = [
+    'src'
+  ];
+
   return await Promise.all(
-    sourceFiles.map(async fileName => {
+    rootFiles.map(async fileName => {
       const resolvedFilePath = path.join(__dirname, '..', fileName);
 
       console.log('resolvedFilePath', resolvedFilePath);
@@ -113,6 +116,12 @@ const srcInit = async () => {
         console.error(`File doesn't exist! : ${resolvedFilePath}`);
         process.exit(1); // eslint-disable-line no-process-exit
       }
+    }),
+    sourceFiles.map(async directory => {
+      const resolvedDirectoryPath = path.join(__dirname, '..', directory);
+
+      console.log('resolvedDirectoryPath', resolvedDirectoryPath);
+      await copyFolderRecursiveSync(resolvedDirectoryPath, TARGET_DIR);
     })
   );
 };
