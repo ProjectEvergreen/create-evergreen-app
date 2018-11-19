@@ -60,9 +60,10 @@ const npmInit = async () => {
 // Copy root and src files to target directory
 const srcInit = async () => {
   const copyBlacklist = ['tasks/'];
+  // TODO .gitignore missing https://github.com/ProjectEvergreen/create-evergreen-app/issues/59
   const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
   const files = packageFiles.filter((file) => {
-    if (copyBlacklist.indexOf(file)) {
+    if (copyBlacklist.indexOf(file) < 0) {
       return file;
     }
   });
