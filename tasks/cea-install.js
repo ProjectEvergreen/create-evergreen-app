@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-const spawn = require('cross-spawn');
+const { spawn } = require('child_process');
 const path = require('path');
-const fs = require('fs-extra');
+const fs = require('fs');
 const os = require('os');
 
 let TARGET_DIR;
@@ -22,13 +22,20 @@ const checkTargetDir = async appDir => {
     process.exit(1); // eslint-disable-line no-process-exit
   }
 
-  const targetExists = await fs.pathExists(appDir);
+  const targetExists = await fs.existsSync(appDir);
+  
+  console.log('appDir', appDir);
+  console.log('targetExists', targetExists);
 
   if (targetExists) {
-    // should we warn about this first?
-    await fs.remove(appDir);
+    console.error(
+      `${appDir} already exists, existing project detected? Delete ${appDir} to try again or run from a different directory.`
+    );
+    process.exit(1); // eslint-disable-line no-process-exit
   }
-  await fs.ensureDir(appDir);
+
+  await fs.mkdirSync(appDir);
+  
   return appDir;
 };
 
@@ -72,8 +79,7 @@ const npmInit = async () => {
 
 // Copy template files to target
 const srcInit = async () => {
-  const copyDirs = [
-    'src',
+  const sourceFiles = [
     '.browserslistrc',
     '.editorconfig',
     '.eslintrc',
@@ -93,16 +99,18 @@ const srcInit = async () => {
   ];
 
   return await Promise.all(
-    copyDirs.map(async directory => {
-      const initDir = path.join(__dirname, '..', directory);
+    sourceFiles.map(async fileName => {
+      const resolvedFilePath = path.join(__dirname, '..', fileName);
 
-      if (await fs.existsSync(initDir)) {
-        return await fs.copySync(
-          initDir,
-          path.join(TARGET_DIR, directory)
+      console.log('resolvedFilePath', resolvedFilePath);
+
+      if (await fs.existsSync(resolvedFilePath)) {
+        return await fs.copyFileSync(
+          resolvedFilePath,
+          path.join(TARGET_DIR, fileName)
         );
       } else {
-        console.error("Directory doesn't exist! :" + initDir);
+        console.error(`File doesn't exist! : ${resolvedFilePath}`);
         process.exit(1); // eslint-disable-line no-process-exit
       }
     })
