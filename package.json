@@ -17,6 +17,25 @@
   "bin": {
     "create-evergreen-app": "./tasks/cea-install.js"
   },
+  "files": [
+    ".browserslistrc",
+    ".editorconfig",
+    ".eslintrc",
+    ".gitignore",
+    ".gitattributes",
+    "yarn.lock",
+    "package-lock.json",
+    "babel.config.js",
+    "karma-test-shim.js",
+    "karma.conf.js",
+    "lws.config.js",
+    "postcss.config.js",
+    "README.md",
+    "webpack.config.common.js",
+    "webpack.config.develop.js",
+    "webpack.config.prod.js",
+    "src/"
+  ],
   "scripts": {
     "build": "rimraf ./public && webpack --config ./webpack.config.prod.js --progress",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",
