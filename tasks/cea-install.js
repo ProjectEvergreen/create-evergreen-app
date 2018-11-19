@@ -34,7 +34,7 @@ const checkTargetDir = async appDir => {
   }
 
   await fs.mkdirSync(appDir);
-  
+
   return appDir;
 };
 
@@ -60,13 +60,14 @@ const npmInit = async () => {
 // Copy root and src files to target directory
 const srcInit = async () => {
   const copyBlacklist = ['tasks/'];
-  // TODO .gitignore missing https://github.com/ProjectEvergreen/create-evergreen-app/issues/59
   const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
   const files = packageFiles.filter((file) => {
     if (copyBlacklist.indexOf(file) < 0) {
       return file;
     }
   });
+
+  await createGitIgnore();
 
   return await Promise.all(
     files.map(async file => {
@@ -82,6 +83,27 @@ const srcInit = async () => {
       }
     })
   );
+};
+
+// Create the missing gitignore because npx wont copy it
+const createGitIgnore = () => {
+  return new Promise((resolve, reject) => {
+    var stream = fs.createWriteStream(".gitignore");
+    stream.once('open', () => {
+      stream.write('*DS_Store\n');
+      stream.write('*.log\n');
+      stream.write('node_modules/\n');
+      stream.write('public/\n');
+      stream.write('reports/\n');
+      stream.end();
+    });
+    stream.once('close', () => {
+      resolve();
+    });
+    stream.once('error', (err) => {
+      reject(err);
+    });
+  });
 };
 
 // Install npm dependencies
@@ -101,7 +123,7 @@ function install() {
       resolve();
     });
   });
-}
+};
 
 const run = async () => {
   try {
