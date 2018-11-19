@@ -59,25 +59,13 @@ const npmInit = async () => {
 
 // Copy root and src files to target directory
 const srcInit = async () => {
-  const files = [
-    '.browserslistrc',
-    '.editorconfig',
-    '.eslintrc',
-    '.gitattributes',
-    // '.gitignore',
-    'babel.config.js',
-    'karma-test-shim.js',
-    'karma.conf.js',
-    'lws.config.js',
-    'package-lock.json',
-    'postcss.config.js',
-    'README.md',
-    'webpack.config.common.js',
-    'webpack.config.develop.js',
-    'webpack.config.prod.js',
-    'yarn.lock',
-    'src'
-  ];
+  const copyBlacklist = ['tasks/'];
+  const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
+  const files = packageFiles.filter((file) => {
+    if (copyBlacklist.indexOf(file)) {
+      return file;
+    }
+  });
 
   return await Promise.all(
     files.map(async file => {
