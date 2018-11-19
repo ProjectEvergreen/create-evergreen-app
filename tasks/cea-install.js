@@ -74,9 +74,13 @@ const npmInit = async () => {
 const srcInit = async () => {
   const copyDirs = [
     'src',
+    '.browserslistrc',
     '.editorconfig',
     '.eslintrc',
     '.gitignore',
+    '.gitattributes',
+    'yarn.lock',
+    'package-lock.json',
     'babel.config.js',
     'karma-test-shim.js',
     'karma.conf.js',

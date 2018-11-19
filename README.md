@@ -38,7 +38,7 @@ Immediate needs for this repo are:
 Make sure you have a LTS version of [Node.js installed](https://nodejs.org/) and then follow these steps to get up and running:
 ```shell
 # 1) Create new evergreen app
-$ npx create-evergreen-app my-app
+$ npx -D create-evergreen-app my-app
 
 # 2) Change Directory
 $ cd my-app
@@ -49,6 +49,13 @@ $ npm start
 # or
 
 $ yarn start
+```
+
+You can also clone the repo from GitHub
+```shell
+$ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git my-app
+$ cd my-app && npm install # or yarn install
+$ npm start # or yarn start
 ```
 
 > 📖 For more documentation and developer guides that cover topics like the build process, browser and device support, creating components, and more, please check out our [wiki](https://github.com/ProjectEvergreen/create-evergreen-app/wiki)!
