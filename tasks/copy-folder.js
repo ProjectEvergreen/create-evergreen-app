@@ -41,4 +41,4 @@ function copyFolderRecursiveSync(source, target) {
   }
 }
 
-module.exports = copyFolderRecursiveSync;
+module.exports = copyFolder = copyFolderRecursiveSync;

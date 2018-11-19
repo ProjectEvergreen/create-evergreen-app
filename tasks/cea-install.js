@@ -2,7 +2,7 @@
 /* eslint no-console: 0 */
 
 // THIS SCRIPT SHOULD ONLY USE NATIVE NODE.JS APIs, NO PACKAGES FROM NPM ALLOWED
-const copyFolderRecursiveSync = require('./utils');
+const copyFolder = require('./copy-folder');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -118,7 +118,7 @@ const srcInit = async () => {
     sourceFiles.map(async directory => {
       const resolvedDirectoryPath = path.join(__dirname, '..', directory);
 
-      await copyFolderRecursiveSync(resolvedDirectoryPath, TARGET_DIR);
+      await copyFolder(resolvedDirectoryPath, TARGET_DIR);
     })
   );
 };
