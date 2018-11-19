@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-const spawn = require('cross-spawn');
-const path = require('path');
-const fs = require('fs-extra');
+// THIS SCRIPT SHOULD ONLY USE NATIVE NODE.JS APIs, NO PACKAGES FROM NPM ALLOWED
+const copyFolder = require('./copy-folder');
+const fs = require('fs');
 const os = require('os');
+const path = require('path');
+const { spawn } = require('child_process');
 
 let TARGET_DIR;
 
@@ -13,7 +15,7 @@ console.log('Welcome to Create Evergreen App ♻️');
 console.log('-------------------------------------------------------');
 
 // Check target application directory/name is included in args
-// remove directory if present, create new target directory
+// warn if directory is present, else create new target directory
 const checkTargetDir = async appDir => {
   if (!appDir) {
     console.error(
@@ -22,20 +24,24 @@ const checkTargetDir = async appDir => {
     process.exit(1); // eslint-disable-line no-process-exit
   }
 
-  const targetExists = await fs.pathExists(appDir);
+  const targetExists = await fs.existsSync(appDir);
 
   if (targetExists) {
-    // should we warn about this first?
-    await fs.remove(appDir);
+    console.error(
+      `${appDir} already exists, existing project detected? Delete ${appDir} to try again or run from a different directory.`
+    );
+    process.exit(1); // eslint-disable-line no-process-exit
   }
-  await fs.ensureDir(appDir);
+
+  await fs.mkdirSync(appDir);
+  
   return appDir;
 };
 
 // Install npm dependencies
 function install() {
   return new Promise((resolve, reject) => {
-    const command = 'npm';
+    const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
     const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
     const child = spawn(command, args, { stdio: 'inherit' });
 
@@ -70,14 +76,13 @@ const npmInit = async () => {
   );
 };
 
-// Copy template files to target
+// Copy root and src files to target directory
 const srcInit = async () => {
-  const copyDirs = [
-    'src',
+  const rootFiles = [
     '.browserslistrc',
     '.editorconfig',
     '.eslintrc',
-    '.gitignore',
+    // '.gitignore',
     '.gitattributes',
     'yarn.lock',
     'package-lock.json',
@@ -92,19 +97,28 @@ const srcInit = async () => {
     'webpack.config.prod.js'
   ];
 
-  return await Promise.all(
-    copyDirs.map(async directory => {
-      const initDir = path.join(__dirname, '..', directory);
+  const sourceFiles = [
+    'src'
+  ];
 
-      if (await fs.existsSync(initDir)) {
-        return await fs.copySync(
-          initDir,
-          path.join(TARGET_DIR, directory)
+  return await Promise.all(
+    rootFiles.map(async fileName => {
+      const resolvedFilePath = path.join(__dirname, '..', fileName);
+
+      if (await fs.existsSync(resolvedFilePath)) {
+        return await fs.copyFileSync(
+          resolvedFilePath,
+          path.join(TARGET_DIR, fileName)
         );
       } else {
-        console.error("Directory doesn't exist! :" + initDir);
+        console.error(`File doesn't exist! : ${resolvedFilePath}`);
         process.exit(1); // eslint-disable-line no-process-exit
       }
+    }),
+    sourceFiles.map(async directory => {
+      const resolvedDirectoryPath = path.join(__dirname, '..', directory);
+
+      await copyFolder(resolvedDirectoryPath, TARGET_DIR);
     })
   );
 };
