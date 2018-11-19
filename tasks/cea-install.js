@@ -89,14 +89,14 @@ const srcInit = async () => {
 const createGitIgnore = () => {
   return new Promise((resolve, reject) => {
 
-    const resolvedPath = path.join(TARGET_DIR, '.gitignore')
+    const resolvedPath = path.join(TARGET_DIR, '.gitignore');
     const stream = fs.createWriteStream(resolvedPath);
     const patterns = ['*DS_Store', '*.log', 'node_modules/', 'public/', 'reports/'];
 
     stream.once('open', () => {
       patterns.forEach(pattern => {
-        stream.write(`${pattern}\n`)
-      })
+        stream.write(`${pattern}\n`);
+      });
       stream.end();
     });
     stream.once('close', () => {
