@@ -82,7 +82,7 @@ const srcInit = async () => {
     '.browserslistrc',
     '.editorconfig',
     '.eslintrc',
-    // '.gitignore',
+    '.gitignore',
     '.gitattributes',
     'yarn.lock',
     'package-lock.json',
