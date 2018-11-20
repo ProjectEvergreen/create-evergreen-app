@@ -59,7 +59,7 @@ const npmInit = async () => {
 
 // Copy root and src files to target directory
 const srcInit = async () => {
-  const copyBlacklist = ['tasks/', '.gitignore'];
+  const copyBlacklist = ['tasks/'];
   const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
   const files = packageFiles.filter((file) => {
     if (copyBlacklist.indexOf(file) < 0) {
