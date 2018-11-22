@@ -21,7 +21,6 @@
     ".browserslistrc",
     ".editorconfig",
     ".eslintrc",
-    ".gitignore",
     ".gitattributes",
     "yarn.lock",
     "package-lock.json",

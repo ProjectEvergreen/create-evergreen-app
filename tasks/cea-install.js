@@ -34,7 +34,7 @@ const checkTargetDir = async appDir => {
   }
 
   await fs.mkdirSync(appDir);
-  
+
   return appDir;
 };
 
@@ -60,13 +60,14 @@ const npmInit = async () => {
 // Copy root and src files to target directory
 const srcInit = async () => {
   const copyBlacklist = ['tasks/'];
-  // TODO .gitignore missing https://github.com/ProjectEvergreen/create-evergreen-app/issues/59
   const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
   const files = packageFiles.filter((file) => {
     if (copyBlacklist.indexOf(file) < 0) {
       return file;
     }
   });
+
+  await createGitIgnore();
 
   return await Promise.all(
     files.map(async file => {
@@ -84,8 +85,31 @@ const srcInit = async () => {
   );
 };
 
+// Create the missing gitignore because npm won't publish it https://docs.npmjs.com/files/package.json#files
+const createGitIgnore = () => {
+  return new Promise((resolve, reject) => {
+
+    const resolvedPath = path.join(TARGET_DIR, '.gitignore');
+    const stream = fs.createWriteStream(resolvedPath);
+    const patterns = ['*DS_Store', '*.log', 'node_modules/', 'public/', 'reports/'];
+
+    stream.once('open', () => {
+      patterns.forEach(pattern => {
+        stream.write(`${pattern}\n`);
+      });
+      stream.end();
+    });
+    stream.once('close', () => {
+      resolve();
+    });
+    stream.once('error', (err) => {
+      reject(err);
+    });
+  });
+};
+
 // Install npm dependencies
-function install() {
+const install = () => {
   return new Promise((resolve, reject) => {
     const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
     const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
@@ -101,7 +125,7 @@ function install() {
       resolve();
     });
   });
-}
+};
 
 const run = async () => {
   try {
