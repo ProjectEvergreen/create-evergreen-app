@@ -4,9 +4,13 @@
     background-color: green;
     border: 1px solid black;
   }
-  & .brand {
+  & .brand a {
     color: white;
     display: block;
+    text-decoration:none;
+    &:focus{
+      outline: none;
+    }
   }
   & ul {
     margin: 0;

@@ -1,56 +1,32 @@
 import { html, LitElement } from '@polymer/lit-element';
 import css from './App.css';
 import '../components/Header/Header';
-import '../components/Container/Container';
 import '../components/PostList/PostList';
-import '../components/Footer/Footer';
+import '../components/Post/Post';
+import '../pages/docs/docs';
+import '../pages/about/about';
+import { connectRouter } from 'lit-redux-router';
+import { store } from '../store.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
 
-import Strapi from 'strapi-sdk-javascript/build/main';
-const apiUrl = process.env.API_URL || 'http://localhost:1337';
-const strapi = new Strapi(apiUrl);
+class AppComponent extends connect(store)(LitElement) {
 
-class AppComponent extends LitElement {
-  static get properties() {
-    return {
-      posts: []
-    };
-  }
-  async connectedCallback() {
-    const response = await strapi.request('POST', '/graphql', {
-      data: {
-        query: `query {
-          posts {
-            _id
-            title
-            content
-            image {
-              url
-            }
-            author {
-              username
-            }
-          }
-        }`
-      }
-    });
-
-    this.posts = response.data.posts;
+  constructor() {
+    super();
+    connectRouter(store);
   }
 
   render() {
-    // prettier-ignore
     return html`
       <style>
         ${css}
       </style>
-      
+
       <eve-header></eve-header>
-      <eve-container>
-        ${this.posts && html`
-          <post-list name='test' .posts=${this.posts} apiUrl=${apiUrl}></post-list>
-        `}
-      </eve-container>
-      <eve-footer></eve-footer
+        <lit-route path="/" component="post-list"></lit-route>
+        <lit-route path="/about" component="about-page"></lit-route>
+        <lit-route path="/docs" component="docs-page"></lit-route>
+        <lit-route path="/page/:id" component="eve-post"></lit-route>
     `;
   }
 }

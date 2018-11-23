@@ -4,14 +4,14 @@ import '../Container/Container';
 
 class HeaderComponent extends LitElement {
   render() {
-    return html`      
+    return html`
       <style>
         ${css}
       </style>
 
         <nav>
         <eve-container>
-          <div class="brand"><h1>Project Evergreen</h1></div>
+          <div class="brand"><h1><a href="/">Project Evergreen</a></h1></div>
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
