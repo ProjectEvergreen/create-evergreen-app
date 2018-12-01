@@ -11,8 +11,8 @@ before(() => {
   setup = new TestSetup();
 });
 
-describe('after running script without application name', function () {
-  it('should display the missing application name error', async function () {
+describe('after running script without application name', () => {
+  it('should display the missing application name error', async () => {
     await setup.run(['tasks/cea-install.js'], true).catch((err) => {
       expect(err).to.be.equal('Missing Project Directory! Please specifiy the application name e.g. create-evergreen-app my-app\n');
     });
@@ -25,12 +25,12 @@ describe('after running script with new application name', function () {
     await setup.run(['tasks/cea-install.js', exampleApp]);
   });
 
-  it('should create the target directory', async function () {
+  it('should create the target directory', async () => {
     const targetExists = await fs.pathExists(exampleApp);
 
     expect(targetExists).to.be.true;
   });
-  it('should install dependencies', async function () {
+  it('should install dependencies', async () => {
     const modulesDir = path.join(exampleApp, 'node_modules');
     const modules = [
       'webpack',
@@ -39,10 +39,10 @@ describe('after running script with new application name', function () {
     ];
 
     return Promise.all(modules.map(async mod => {
-      return fs.pathExists(path.join(modulesDir, mod)).should.eventually.equal(true);
+      return await fs.pathExists(path.join(modulesDir, mod)).should.eventually.equal(true);
     }));
   });
-  it('should copy project files', async function () {
+  it('should copy project files', async () => {
     const copyBlacklist = ['tasks/'];
     const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
     const files = packageFiles.filter((file) => {
@@ -57,12 +57,12 @@ describe('after running script with new application name', function () {
   });
 });
 
-describe('after running script with pre-existing application of the same name', function () {
+describe('after running script with pre-existing application of the same name', () => {
   after(async () => {
     await fs.remove(exampleApp);
   });
-  it('should display an error', async function () {
-    await setup.run(['tasks/cea-install.js', 'my-app']).catch((err) => {
+  it('should display an error', async () => {
+    await setup.run(['tasks/cea-install.js', exampleApp]).catch((err) => {
       expect(err).to.be.equal('my-app already exists, existing project detected? Delete my-app to try again or run from a different directory.\n');
     });
   });
