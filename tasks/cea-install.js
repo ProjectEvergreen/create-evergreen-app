@@ -47,7 +47,7 @@ const checkTargetDir = async () => {
 
   if (targetExists) {
     console.error(
-      `${TARGET_DIR} already exists, existing project detected? Delete ${appDir} to try again or run from a different directory.`
+      `${TARGET_DIR} already exists, existing project detected? Delete ${TARGET_DIR} to try again or run from a different directory.`
     );
     process.exit(1); // eslint-disable-line no-process-exit
   }
