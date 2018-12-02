@@ -11,6 +11,55 @@ before(() => {
   setup = new TestSetup();
 });
 
+const testInstall = packageManager => {
+  describe(`after running script using ${packageManager} with new application name`, function () {
+    this.timeout(60000);
+    before(async () => {
+      const pkgMng = packageManager === 'yarn' ? '--yarn' : '';
+
+      await setup.run(['tasks/cea-install.js', exampleApp, pkgMng]);
+    });
+
+    // Only remove test install after first run, save for next test
+    if (packageManager !== 'yarn') {
+      after(async () => {
+        await fs.remove(exampleApp);
+      });
+    }
+
+    it('should create the target directory', async () => {
+      const targetExists = await fs.pathExists(exampleApp);
+
+      expect(targetExists).to.be.true;
+    });
+    it('should install dependencies', async () => {
+      const modulesDir = path.join(exampleApp, 'node_modules');
+      const modules = [
+        'webpack',
+        '@polymer',
+        '@babel'
+      ];
+
+      return Promise.all(modules.map(async mod => {
+        return await fs.pathExists(path.join(modulesDir, mod)).should.eventually.equal(true);
+      }));
+    });
+    it('should copy project files', async () => {
+      const copyBlacklist = ['tasks/'];
+      const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
+      const files = packageFiles.filter((file) => {
+        if (copyBlacklist.indexOf(file) < 0) {
+          return file;
+        }
+      });
+
+      return Promise.all(files.map(async file => {
+        return await fs.pathExists(path.join(exampleApp, file)).should.eventually.equal(true);
+      }));
+    });
+  });
+};
+
 describe('after running script without application name', () => {
   it('should display the missing application name error', async () => {
     await setup.run(['tasks/cea-install.js'], true).catch((err) => {
@@ -19,43 +68,8 @@ describe('after running script without application name', () => {
   });
 });
 
-describe('after running script with new application name', function () {
-  this.timeout(60000);
-  before(async () => {
-    await setup.run(['tasks/cea-install.js', exampleApp]);
-  });
-
-  it('should create the target directory', async () => {
-    const targetExists = await fs.pathExists(exampleApp);
-
-    expect(targetExists).to.be.true;
-  });
-  it('should install dependencies', async () => {
-    const modulesDir = path.join(exampleApp, 'node_modules');
-    const modules = [
-      'webpack',
-      '@polymer',
-      '@babel'
-    ];
-
-    return Promise.all(modules.map(async mod => {
-      return await fs.pathExists(path.join(modulesDir, mod)).should.eventually.equal(true);
-    }));
-  });
-  it('should copy project files', async () => {
-    const copyBlacklist = ['tasks/'];
-    const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
-    const files = packageFiles.filter((file) => {
-      if (copyBlacklist.indexOf(file) < 0) {
-        return file;
-      }
-    });
-
-    return Promise.all(files.map(async file => {
-      return await fs.pathExists(path.join(exampleApp, file)).should.eventually.equal(true);
-    }));
-  });
-});
+testInstall('npm');
+testInstall('yarn');
 
 describe('after running script with pre-existing application of the same name', () => {
   after(async () => {
@@ -63,7 +77,7 @@ describe('after running script with pre-existing application of the same name', 
   });
   it('should display an error', async () => {
     await setup.run(['tasks/cea-install.js', exampleApp]).catch((err) => {
-      expect(err).to.be.equal('my-app already exists, existing project detected? Delete my-app to try again or run from a different directory.\n');
+      expect(err).to.be.equal(`${exampleApp} already exists, existing project detected? Delete my-app to try again or run from a different directory.\n`);
     });
   });
 });

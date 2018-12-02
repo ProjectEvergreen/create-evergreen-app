@@ -7,6 +7,9 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { spawn } = require('child_process');
+const chalk = require('chalk');
+const commander = require('commander');
+const templatePkg = require(path.join(__dirname, '..', 'package.json'));
 
 let TARGET_DIR;
 
@@ -14,33 +17,46 @@ console.log('-------------------------------------------------------');
 console.log('Welcome to Create Evergreen App ♻️');
 console.log('-------------------------------------------------------');
 
+const program = new commander.Command(templatePkg.name)
+  .version(templatePkg.version)
+  .arguments('<application-directory>')
+  .usage(`${chalk.green('<application-directory>')} [options]`)
+  .action(name => {
+    TARGET_DIR = name;
+  })
+  .option('--yarn')
+  .parse(process.argv);
+
+if (program.yarn) {
+  console.log('Yarn Enabled');
+}
+
 // Check target application directory/name is included in args
 // warn if directory is present, else create new target directory
-const checkTargetDir = async appDir => {
-  if (!appDir) {
+const checkTargetDir = async () => {
+  if (typeof TARGET_DIR === 'undefined') {
     console.error(
-      'Missing Project Directory! Please specifiy the application name e.g. create-evergreen-app my-app'
+      `Missing Project Directory! Please specifiy the application name e.g. ${chalk.green('create-evergreen-app my-app')}`
     );
+    console.log();
+    console.log(`Run ${chalk.green('create-evergreen-app --help')} for available options`);
     process.exit(1); // eslint-disable-line no-process-exit
   }
 
-  const targetExists = await fs.existsSync(appDir);
+  const targetExists = await fs.existsSync(TARGET_DIR);
 
   if (targetExists) {
     console.error(
-      `${appDir} already exists, existing project detected? Delete ${appDir} to try again or run from a different directory.`
+      `${TARGET_DIR} already exists, existing project detected? Delete ${appDir} to try again or run from a different directory.`
     );
     process.exit(1); // eslint-disable-line no-process-exit
   }
 
-  await fs.mkdirSync(appDir);
-
-  return appDir;
+  return await fs.mkdirSync(TARGET_DIR);
 };
 
 // Create new package.json
 const npmInit = async () => {
-  const templatePkg = require(path.join(__dirname, '..', 'package.json'));
   const appPkg = {
     name: TARGET_DIR,
     version: '0.1.0',
@@ -111,7 +127,8 @@ const createGitIgnore = () => {
 // Install npm dependencies
 const install = () => {
   return new Promise((resolve, reject) => {
-    const command = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
+    const pkgMng = program.yarn ? 'yarn' : 'npm'; // default to npm
+    const command = os.platform() === 'win32' ? `${pkgMng}.cmd` : pkgMng;
     const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
     const process = spawn(command, args, { stdio: 'inherit' });
 
@@ -130,7 +147,7 @@ const install = () => {
 const run = async () => {
   try {
     console.log('Preparing project directory...');
-    TARGET_DIR = await checkTargetDir(process.argv[2]);
+    await checkTargetDir();
 
     console.log('Initializing npm dependencies...');
     npmInit();

@@ -47,7 +47,9 @@
     "test-install": "mocha --timeout 2000"
   },
   "dependencies": {
-    "@polymer/lit-element": "^0.6.1"
+    "@polymer/lit-element": "^0.6.1",
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
