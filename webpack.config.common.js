@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const path = require('path');
+const publicPath = '/';
 
 module.exports = {
   context: path.resolve('./src'),
@@ -11,7 +12,8 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: '[name].[chunkhash].bundle.js'
+    filename: 'js/[name].[chunkhash].bundle.js',
+    publicPath
   },
 
   module: {
@@ -41,7 +43,7 @@ module.exports = {
     }),
     new ManifestPlugin({
       fileName: 'manifest.json',
-      publicPath: '/'
+      publicPath
     })
   ]
 
