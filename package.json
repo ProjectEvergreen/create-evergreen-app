@@ -22,6 +22,7 @@
     ".editorconfig",
     ".eslintrc",
     ".gitattributes",
+    "Dockerfile",
     "yarn.lock",
     "package-lock.json",
     "babel.config.js",
