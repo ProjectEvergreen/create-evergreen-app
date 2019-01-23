@@ -143,10 +143,12 @@ $ docker build -t imagename:releasename .
 To run the docker image:
 
 ```bash
-$ docker run imagename:releasename
+$ docker run --init imagename:releasename
 ```
 
 You can access the app in your browser at  http://172.17.0.2:8000 (your container's IP at port 8000)
+
+**Note** Use the `--init` flag so that the signals are passed correctly.
 
 To test the docker image:
 
