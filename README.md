@@ -129,3 +129,27 @@ For convenience, Create Evergreen App comes with the dependencies needed to run 
 - For more information on testing in general, see [our wiki!](https://github.com/ProjectEvergreen/create-evergreen-app/wiki).
 
 > Chrome headless is enabled by default since it is the most portable between local and continuous integration environments.
+
+#### Docker
+
+Create Evergreen App comes Docker-ready with a built in Dockerfile
+
+To build and tag a docker image with any image/release name for your app:
+
+```bash
+$ docker build -t imagename:releasename .
+```
+
+To run the docker image:
+
+```bash
+$ docker run imagename:releasename
+```
+
+You can access the app in your browser at  http://172.17.0.2:8000 (your container's IP at port 8000)
+
+To test the docker image:
+
+```bash
+$ docker run --init imagename:releasename npm run test
+```
