@@ -140,18 +140,46 @@ To build and tag a docker image with any image/release name for your app:
 $ docker build -t imagename:releasename .
 ```
 
-To run the docker image:
+To run the docker image in production:
 
 ```bash
-$ docker run --init imagename:releasename
+$ docker run --init --name mycontainer imagename:releasename
 ```
 
-You can access the app in your browser at  http://172.17.0.2:8000 (your container's IP at port 8000)
+**Note** Use the `--init` flag so that the exit signals are passed correctly.
 
-**Note** Use the `--init` flag so that the signals are passed correctly.
+Which should display something like:
+
+```
+Serving at http://e899fd0ef42c:8000, http://127.0.0.1:8000, http://172.17.0.2:8000
+```
+
+You will need to access your app using the container's IP and port(yours will be different, but it's the third URL shown above).
+
+Otherwise, you can get your container `IPAddress` with:
+
+```
+docker inspect mycontainer
+```
+
+#### Docker Development
+
+You can run your application's webpack-dev-server within a container by modifiying the webpack.config.develop.js with your container's IP address(yours will be different, see above)
+
+```
+host: '172.17.0.2',
+```
+
+You can mount and run your application's `src` folder so that your changes are immediately reflected within a running container with:
+
+```
+docker run --init --name mycontainer -v "$(pwd)"/src:/opt/app/src imagename:releasename npm run develop
+```
+
+#### Docker Testing
 
 To test the docker image:
 
 ```bash
-$ docker run --init imagename:releasename npm run test
+$ docker run --init imagename:releasename npm test
 ```

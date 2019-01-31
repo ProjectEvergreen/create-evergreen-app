@@ -6,10 +6,10 @@ FROM thegreenhouse/nodejs-dev:0.4.0
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 
-# default to port 8000 for node, and 9229 and 9230 (tests) for debug
+# default to port 8000 for prod, 1981 for dev, and 9876 for testing
 ARG PORT=8000
 ENV PORT $PORT
-EXPOSE $PORT 9229 9230
+EXPOSE $PORT 1981 9876
 
 RUN npm i npm@latest -g
 
