@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 
-// THIS SCRIPT SHOULD ONLY USE NATIVE NODE.JS APIs, NO PACKAGES FROM NPM ALLOWED
 const copyFolder = require('./copy-folder');
 const fs = require('fs');
 const os = require('os');
@@ -9,13 +8,13 @@ const path = require('path');
 const { spawn } = require('child_process');
 const chalk = require('chalk');
 const commander = require('commander');
-const templatePkg = require(path.join(__dirname, '..', 'package.json'));
+const templatePkg = require(path.join(__dirname, '..', '/template/package.json'));
 
 let TARGET_DIR;
 
-console.log('-------------------------------------------------------');
-console.log('Welcome to Create Evergreen App ♻️');
-console.log('-------------------------------------------------------');
+console.log(`${chalk.rgb(175, 207, 71)('-------------------------------------------------------')}`);
+console.log(`${chalk.rgb(175, 207, 71)('Welcome to Create Evergreen App ♻️')}`);
+console.log(`${chalk.rgb(175, 207, 71)('-------------------------------------------------------')}`);
 
 const program = new commander.Command(templatePkg.name)
   .version(templatePkg.version)
@@ -24,7 +23,7 @@ const program = new commander.Command(templatePkg.name)
   .action(name => {
     TARGET_DIR = name;
   })
-  .option('--yarn')
+  .option('--yarn', 'Use yarn package manager instead of npm default')
   .parse(process.argv);
 
 if (program.yarn) {
@@ -75,19 +74,19 @@ const npmInit = async () => {
 
 // Copy root and src files to target directory
 const srcInit = async () => {
-  const copyBlacklist = ['tasks/'];
-  const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
-  const files = packageFiles.filter((file) => {
-    if (copyBlacklist.indexOf(file) < 0) {
-      return file;
-    }
-  });
+  // const copyBlacklist = [''];
+  const packageFiles = require(path.join(__dirname, '..', '/template/package.json')).files;
+  // const files = packageFiles.filter((file) => {
+  //   if (copyBlacklist.indexOf(file) < 0) {
+  //     return file;
+  //   }
+  // });
 
   await createGitIgnore();
 
   return await Promise.all(
-    files.map(async file => {
-      const resolvedPath = path.join(__dirname, '..', file);
+    packageFiles.map(async file => {
+      const resolvedPath = path.join(__dirname, '..', '/template/', file);
 
       if (fs.lstatSync(resolvedPath).isDirectory()) {
         return await copyFolder(resolvedPath, TARGET_DIR);

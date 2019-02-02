@@ -45,15 +45,9 @@ const testInstall = packageManager => {
       }));
     });
     it('should copy project files', async () => {
-      const copyBlacklist = ['tasks/'];
-      const packageFiles = require(path.join(__dirname, '..', 'package.json')).files;
-      const files = packageFiles.filter((file) => {
-        if (copyBlacklist.indexOf(file) < 0) {
-          return file;
-        }
-      });
+      const packageFiles = require(path.join(__dirname, '..', 'template', 'package.json')).files;
 
-      return Promise.all(files.map(async file => {
+      return Promise.all(packageFiles.map(async file => {
         return await fs.pathExists(path.join(exampleApp, file)).should.eventually.equal(true);
       }));
     });

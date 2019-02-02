@@ -32,21 +32,4 @@ jobs:
 
       - run:
           name: Run Unit Tests
-          command: export NODE_ENV=production && npm run test
-
-      - run:
-          name: Execute The Build
-          command: npm run build
-
-      - run:
-          name: CEA Install Self Test
-          command: node ./tasks/cea-install my-app
-
-      # Sanity test yarn install and tasks
-      - run:
-          name: Yarn install test
-          command: rm -rf ./node_modules && yarn install
-
-      - run:
-          name: Yarn tasks test
-          command: export NODE_ENV=production && yarn lint && yarn build && yarn test
+          command: npm run test-template && npm test
