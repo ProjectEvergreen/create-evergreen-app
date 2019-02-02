@@ -2,7 +2,6 @@ const path = require('path');
 const webpackConfig = require('./webpack.config.common');
 const isProductionBuild = process.env.NODE_ENV === 'production';
 const shouldWatch = !isProductionBuild;
-const shouldSingleRun = isProductionBuild;
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 webpackConfig.devtool = 'inline-source-map';
@@ -62,7 +61,7 @@ module.exports = function (config) {
         ] // https://github.com/Googlechrome/puppeteer/issues/290#issuecomment-322852784
       }
     },
-    singleRun: shouldSingleRun,
+    singleRun: true,
     captureTimeout: 210000, // https://github.com/jasmine/jasmine/issues/1413#issuecomment-334247097
     browserDisconnectTolerance: 3,
     browserDisconnectTimeout: 210000,
