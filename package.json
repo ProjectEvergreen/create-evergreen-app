@@ -46,7 +46,7 @@
     "test": "rimraf ./reports && karma start"
   },
   "dependencies": {
-    "@polymer/lit-element": "^0.6.1"
+    "lit-element": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement } from 'lit-element';
 import '../components/header/header.js';
 import '../pages/home/home.js';
 import css from './app.css';
