@@ -11,7 +11,7 @@ class HeaderComponent extends LitElement {
       </style>
 
       <header>
-        <a href="https://projectevergreen.github.io/" title="Project Evergreen home link" style="background-image: url(./${logo})">&nbsp;</a>
+        <a href="https://projectevergreen.github.io/" title="Project Evergreen home link" style="background-image: url(${logo})">&nbsp;</a>
         <h1>
           <small>Welcome to</small>
           Create&nbsp;Evergreen&nbsp;App!</h1>
