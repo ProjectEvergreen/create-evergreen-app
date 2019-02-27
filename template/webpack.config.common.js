@@ -10,7 +10,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'js/[name].[chunkhash].bundle.js',
+    filename: '[name].[chunkhash].bundle.js',
     publicPath: '/'
   },
 
