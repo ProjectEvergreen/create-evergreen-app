@@ -43,8 +43,8 @@
     "yarn.lock"
   ],
   "scripts": {
-    "lint": "eslint \"./tasks/**/*.js\"",
-    "test-template": "npm i --prefix template && npm test --prefix template",
+    "lint": "eslint \"./tasks/**/*.js\" \"./test/**/*.js\"",
+    "test:template": "export NODE_ENV=production && npm i --prefix template && npm test --prefix template && npm run lint --prefix template && npm run build --prefix template",
     "test": "mocha --timeout 2000"
   },
   "dependencies": {
