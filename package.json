@@ -1,7 +1,7 @@
 {
-  "name": "@evergreen-wc/test-cea",
-  "version": "0.4.21",
-  "description": "Create an evergreen web application with no build configuration",
+  "name": "create-evergreen-app",
+  "version": "0.4.2",
+  "description": "Create an evergreen web application with no build configuration.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "main": "src/index.js",
@@ -36,7 +36,6 @@
     "template/webpack.config.prod.js",
     "template/src/",
     "tasks/",
-    "docs/",
     "test/",
     "README.md",
     "package-lock.json",
