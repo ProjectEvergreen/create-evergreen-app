@@ -69,13 +69,13 @@ To start developing, you can simply go ahead and edit and add files as you need 
 Here are some additional commands you can run while running `npx create-evergreen-app`
 ```shell
 # install dependencies with Yarn instead of npm
-$ npx @evergreen-wc/test-cea my-app --yarn
+$ npx create-evergreen-app my-app --yarn
 
 # get help
-$ npx @evergreen-wc/test-cea --help
+$ npx create-evergreen-app --help
 
 # get the version
-$ npx @evergreen-wc/test-cea --version
+$ npx create-evergreen-app --version
 ```
 
 ### Development
