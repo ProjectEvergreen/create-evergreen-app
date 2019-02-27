@@ -37,7 +37,7 @@ const testInstall = packageManager => {
       const modulesDir = path.join(exampleApp, 'node_modules');
       const modules = [
         'webpack',
-        '@polymer',
+        'lit-element',
         '@babel'
       ];
 
