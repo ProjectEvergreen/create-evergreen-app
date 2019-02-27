@@ -44,7 +44,7 @@
   ],
   "scripts": {
     "lint": "eslint \"./tasks/**/*.js\" \"./test/**/*.js\"",
-    "test:template": "cd template && export NODE_ENV=production && npm i && npm run test && npm run lint && npm run build",
+    "test:template": "export NODE_ENV=production && npm i && npm run test && npm run lint && npm run build",
     "test:template-backup": "export NODE_ENV=production && npm i --prefix template && npm test --prefix template && npm run lint --prefix template && npm run build --prefix template",
     "test": "mocha --timeout 2000"
   },

@@ -36,4 +36,4 @@ jobs:
 
       - run:
           name: Run CEA npm scripts
-          command: npm run test:template
+          command: cd template && npm run test:template
