@@ -65,6 +65,19 @@ To start developing, you can simply go ahead and edit and add files as you need 
 
 > ℹ️ Feel free to edit or delete any content / code related to Create Evergreen App (including README.md) to customize this repo to your own needs.
 
+### Additional CLI Commands
+Here are some additional commands you can run while running `npx create-evergreen-app`
+```shell
+# install dependencies with Yarn instead of npm
+$ npx @evergreen-wc/test-cea my-app --yarn
+
+# get help
+$ npx @evergreen-wc/test-cea --help
+
+# get the version
+$ npx @evergreen-wc/test-cea --version
+```
+
 ### Development
 Automated tasks have been made available as **npm** scripts that you can run from the command line using `yarn` or `npm run`:
 - `develop` - To start a development server with live reload and file watching

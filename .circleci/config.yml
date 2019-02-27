@@ -27,26 +27,13 @@ jobs:
       # tasks this was part of the lint npm task but was moved out
       # since tasks/* isn't part of the npx install and so lint would fail on the user's machine
       - run:
-          name: Run Linter
-          command: npm run lint && ./node_modules/.bin/eslint "./tasks/*.js"
+          name: Run CEA Linter
+          command: npm run lint
 
       - run:
-          name: Run Unit Tests
-          command: export NODE_ENV=production && npm run test
+          name: Run Unit Tests for CEA Installer
+          command: npm test
 
       - run:
-          name: Execute The Build
-          command: npm run build
-
-      - run:
-          name: CEA Install Self Test
-          command: node ./tasks/cea-install my-app
-
-      # Sanity test yarn install and tasks
-      - run:
-          name: Yarn install test
-          command: rm -rf ./node_modules && yarn install
-
-      - run:
-          name: Yarn tasks test
-          command: export NODE_ENV=production && yarn lint && yarn build && yarn test
+          name: Run CEA npm scripts
+          command: npm run test:template

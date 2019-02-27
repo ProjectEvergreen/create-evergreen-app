@@ -4,7 +4,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 
 module.exports = webpackMerge(commonConfig, {
-  
+
   mode: 'production',
 
   performance: {
@@ -15,7 +15,7 @@ module.exports = webpackMerge(commonConfig, {
     new FaviconsWebpackPlugin({
       logo: './favicon.png',
       emitStats: true,
-      prefix: '/',
+      prefix: 'icons/',
       statsFilename: 'icons/stats.json',
       inject: true,
       title: 'Create Evergreen App',
@@ -39,5 +39,4 @@ module.exports = webpackMerge(commonConfig, {
       openAnalyzer: false
     })
   ]
-  
 });

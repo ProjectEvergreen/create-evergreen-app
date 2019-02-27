@@ -10,9 +10,10 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: '[name].[chunkhash].bundle.js'
+    filename: '[name].[chunkhash].bundle.js',
+    publicPath: '/'
   },
-  
+
   module: {
     rules: [{
       test: /\.js$/,
@@ -34,12 +35,9 @@ module.exports = {
   },
 
   plugins: [
-
     new HtmlWebpackPlugin({
       template: './index.html',
       chunksSortMode: 'dependency'
     })
-  
   ]
-
 };
