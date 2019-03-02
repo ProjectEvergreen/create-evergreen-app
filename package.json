@@ -48,7 +48,7 @@
     "gh-pages": "rimraf ./docs && cd ./template && npm run build && cd ../ && cp -rv ./template/public/ ./docs",
     "test:template": "cd template && npm i && export NODE_ENV=production && npm run test && npm run lint && npm run build",
     "test:template-backup": "export NODE_ENV=production && npm i --prefix template && npm test --prefix template && npm run lint --prefix template && npm run build --prefix template",
-    "test": "mocha --timeout 2000"
+    "test": "mocha --timeout 5000"
   },
   "dependencies": {
     "chai": "^4.2.0",

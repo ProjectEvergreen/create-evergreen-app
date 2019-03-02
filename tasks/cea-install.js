@@ -58,15 +58,9 @@ const checkTargetDir = async () => {
 
 // Create new package.json
 const npmInit = async () => {
-  const appPkg = {
-    name: TARGET_DIR,
-    version: '0.1.0',
-    private: true
-  };
+  let appPkg = templatePkg;
 
-  appPkg.scripts = templatePkg.scripts;
-  appPkg.dependencies = templatePkg.dependencies;
-  appPkg.devDependencies = templatePkg.devDependencies;
+  appPkg.name = TARGET_DIR;
 
   await fs.writeFileSync(
     path.join(TARGET_DIR, 'package.json'),
