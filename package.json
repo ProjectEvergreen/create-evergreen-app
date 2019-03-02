@@ -4,7 +4,6 @@
   "description": "Create an evergreen web application with no build configuration.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
-  "main": "src/index.js",
   "homepage": "https://github.com/ProjectEvergreen/create-evergreen-app#readme",
   "repository": {
     "type": "git",
@@ -12,7 +11,11 @@
   },
   "keywords": [
     "Web Components",
-    "Lit Element"
+    "LitElement",
+    "lit-html",
+    "JavaScript",
+    "CSS",
+    "HTML"
   ],
   "bin": {
     "create-evergreen-app": "./tasks/cea-install.js"
@@ -38,15 +41,14 @@
     "tasks/",
     "test/",
     "README.md",
-    "package-lock.json",
-    "yarn.lock"
+    "package-lock.json"
   ],
   "scripts": {
     "lint": "eslint \"./tasks/**/*.js\" \"./test/**/*.js\"",
     "gh-pages": "rimraf ./docs && cd ./template && npm run build && cd ../ && cp -rv ./template/public/ ./docs",
     "test:template": "cd template && npm i && export NODE_ENV=production && npm run test && npm run lint && npm run build",
     "test:template-backup": "export NODE_ENV=production && npm i --prefix template && npm test --prefix template && npm run lint --prefix template && npm run build --prefix template",
-    "test": "mocha --timeout 2000"
+    "test": "mocha --timeout 5000"
   },
   "dependencies": {
     "chai": "^4.2.0",

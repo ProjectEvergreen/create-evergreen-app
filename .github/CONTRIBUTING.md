@@ -14,9 +14,13 @@ Please make sure to have the following prepared (where applicable)
 Please make sure an issue exists when submitting a PR that can be referenced and used to complete the PR template, as well as provided contextual information for reviewers.
 
 ## Making Changes
+To develop for the project, you'll want to follow these steps:
+1. Have [NodeJS LTS](https://nodejs.org) installed (>= 10.x)
+1. Clone the repository
+1. Run `npm ci`
 
 ### CEA Installer
-The installer is run by `npx` and creates the _template/_ directory for users.
+The installer is run by `npx` and creates a new application from the contents of the _template/_ directory.
 
 To test changes to the installaer, run with whatever params you want to test
 ```shell 
@@ -31,3 +35,9 @@ The actual CEA app is in _template/_.  To develop and make changes for CEA, do t
 1. `npm install` or `yarn install`
 
 You can now run npm scripts and run the application.
+
+### Unit Testing
+Unit tests have been written for the installer and _template/_ files, that can be run using
+```shell
+$ npm test
+```
