@@ -32,7 +32,8 @@ $ yarn start
 You can also run the installer locally by cloning the repo and using NodeJS
 ```shell
 $ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git
-$ npm ci
+$ cd create-evergreen-app
+$ npm ci # install project dependencies
 $ node ./tasks/cea-install.js my-app # you can pass other supported CLI params here as well
 ```
 
