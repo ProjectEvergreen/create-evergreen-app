@@ -4,7 +4,6 @@
   "description": "Create an evergreen web application with no build configuration.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
-  "main": "src/index.js",
   "homepage": "https://github.com/ProjectEvergreen/create-evergreen-app#readme",
   "repository": {
     "type": "git",
@@ -12,7 +11,11 @@
   },
   "keywords": [
     "Web Components",
-    "Lit Element"
+    "Lit Element",
+    "Lit Element",
+    "JavaScript",
+    "CSS",
+    "HTML"
   ],
   "bin": {
     "create-evergreen-app": "./tasks/cea-install.js"
@@ -38,8 +41,7 @@
     "tasks/",
     "test/",
     "README.md",
-    "package-lock.json",
-    "yarn.lock"
+    "package-lock.json"
   ],
   "scripts": {
     "lint": "eslint \"./tasks/**/*.js\" \"./test/**/*.js\"",

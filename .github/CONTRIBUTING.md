@@ -14,9 +14,13 @@ Please make sure to have the following prepared (where applicable)
 Please make sure an issue exists when submitting a PR that can be referenced and used to complete the PR template, as well as provided contextual information for reviewers.
 
 ## Making Changes
+To develop for the project, you'll need the following tools installed
+1. Current [NodeJS](https://nodejs.org) LTS
+1. Clone the repository
+1. Run `npm ci`
 
 ### CEA Installer
-The installer is run by `npx` and creates the _template/_ directory for users.
+The installer is run by `npx` and creates a new applicaition from the contents of the _template/_ directory.
 
 To test changes to the installaer, run with whatever params you want to test
 ```shell 

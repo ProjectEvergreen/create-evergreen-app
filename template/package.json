@@ -1,20 +1,7 @@
 {
-  "name": "create-evergreen-app",
-  "version": "0.4.1",
-  "description": "Create an evergreen web application with no build configuration",
-  "license": "MIT",
-  "author": "Owen Buckley <owen@thegreenhouse.io>",
-  "main": "src/index.js",
-  "homepage": "https://github.com/ProjectEvergreen/create-evergreen-app#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ProjectEvergreen/create-evergreen-app.git"
-  },
+  "name": "my-app",
+  "version": "0.1.0",
   "private": true,
-  "keywords": [
-    "Web Components",
-    "Lit Element"
-  ],
   "scripts": {
     "build": "rimraf ./public && webpack --config ./webpack.config.prod.js --progress",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",

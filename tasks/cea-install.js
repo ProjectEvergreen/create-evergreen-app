@@ -146,11 +146,11 @@ const run = async () => {
     console.log('Preparing project directory...');
     await checkTargetDir();
 
-    console.log('Initializing npm dependencies...');
-    npmInit();
-
     console.log('Copying project files...');
     await srcInit();
+
+    console.log('Initializing npm dependencies...');
+    npmInit();
 
     // change directory to target directory
     process.chdir(path.resolve(process.cwd(), TARGET_DIR));
