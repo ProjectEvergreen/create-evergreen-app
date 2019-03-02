@@ -14,8 +14,8 @@ Please make sure to have the following prepared (where applicable)
 Please make sure an issue exists when submitting a PR that can be referenced and used to complete the PR template, as well as provided contextual information for reviewers.
 
 ## Making Changes
-To develop for the project, you'll need the following tools installed
-1. Current [NodeJS](https://nodejs.org) LTS
+To develop for the project, you'll need the do follow these steps:
+1. Have current [NodeJS LTS](https://nodejs.org) installed
 1. Clone the repository
 1. Run `npm ci`
 
@@ -35,3 +35,9 @@ The actual CEA app is in _template/_.  To develop and make changes for CEA, do t
 1. `npm install` or `yarn install`
 
 You can now run npm scripts and run the application.
+
+### Unit Testing
+Unit tests have been written for the installer and _template/_ files, that can be run using
+```shell
+$ npm test
+```

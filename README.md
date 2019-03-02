@@ -52,7 +52,7 @@ $ npx create-evergreen-app --version
 ```
 
 ## Developing with CEA
-To start developing, simply open the _my-app_ folder in your favorite IDE ([VSCode]() has great modern JavaScript support) and start editing  and adding files as you need in `src/`.
+To start developing, simply open the _my-app_ folder in your favorite IDE ([VSCode](https://code.visualstudio.com/) has great modern JavaScript support) and start editing  and adding files as you need in `src/`.
 
 ### Development Workflows
 Automated tasks have been made available as **npm** scripts that you can run from the command line using `yarn` or `npm run`:
