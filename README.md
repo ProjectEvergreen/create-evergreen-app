@@ -13,7 +13,7 @@ A starter project for getting up and running with an evergreen web application d
 The goal of Project Evergreen is to march alongside the web and demonstrate those features projects like these, that can be a reference and starting point, so that both developers and users can benefit from a modern application intended for modern browsers.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
 
 ## Getting Started
-Make sure you have a LTS version of [Node.js installed](https://nodejs.org/) and then follow these steps to get up and running:
+Make sure you have a LTS version of [Node.js](https://nodejs.org/) (>= 10.x) and then follow these steps to get up and running:
 ```shell
 # 1) Create new evergreen app
 $ npx create-evergreen-app my-app
@@ -32,7 +32,7 @@ $ yarn start
 You can also run the installer locally by cloning the repo and using NodeJS
 ```shell
 $ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git
-$ npm install
+$ npm ci
 $ node ./tasks/cea-install.js my-app # you can pass other supported CLI params here as well
 ```
 

@@ -11,8 +11,8 @@
   },
   "keywords": [
     "Web Components",
-    "Lit Element",
-    "Lit Element",
+    "LitElement",
+    "lit-html",
     "JavaScript",
     "CSS",
     "HTML"
