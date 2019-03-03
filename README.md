@@ -10,7 +10,7 @@ A starter project for getting up and running with an evergreen web application d
 ![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner-0.4.0.png)
 
 ### Project Goals
-The goal of Project Evergreen is to march alongside the web and demonstrate those features projects like these, that can be a reference and starting point, so that both developers and users can benefit from a modern application intended for modern browsers.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
+The goal of Project Evergreen is to march alongside the web and demonstrate those features in projects like these, that can be a reference and starting point, so that both developers and users can benefit from a modern application intended for modern browsers.  Evergreen Web Applications aim to be performant, promote usage of modern web features, be accessible to a wide range of users, and be a productive experience for developers.
 
 ## Getting Started
 Make sure you have a LTS version of [Node.js](https://nodejs.org/) (>= 10.x) and then follow these steps to get up and running:
@@ -35,12 +35,11 @@ $ git clone https://github.com/ProjectEvergreen/create-evergreen-app.git
 $ cd create-evergreen-app
 $ npm ci # install project dependencies
 $ node ./tasks/cea-install.js my-app # you can pass other supported CLI params here as well
+$ mv my-app /where/ever/you/want # move my-app folder anywhere you want, and start developing!
 ```
 
-You can now copy the _my-app/_ folder anywhere you want and start developing!
-
 ### Additional CLI Commands
-Here are some additional commands you can run while running `npx create-evergreen-app`
+Here are some additional commands you can use when running the installer
 ```shell
 # install dependencies with Yarn instead of npm
 $ npx create-evergreen-app my-app --yarn
@@ -52,7 +51,7 @@ $ npx create-evergreen-app --help
 $ npx create-evergreen-app --version
 ```
 
-## Developing with CEA
+## Developing with Create Evergreen App
 To start developing, simply open the _my-app_ folder in your favorite IDE ([VSCode](https://code.visualstudio.com/) has great modern JavaScript support) and start editing  and adding files as you need in `src/`.
 
 ### Development Workflows
