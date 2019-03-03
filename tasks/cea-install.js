@@ -120,7 +120,8 @@ const install = () => {
   return new Promise((resolve, reject) => {
     const pkgMng = program.yarn ? 'yarn' : 'npm'; // default to npm
     const command = os.platform() === 'win32' ? `${pkgMng}.cmd` : pkgMng;
-    const args = ['install', '--save', '--save-exact', '--loglevel', 'error'];
+    const installCommand = pkgMng === 'yarn' ? 'install' : 'ci';
+    const args = [installCommand, '--loglevel', 'error'];
     const process = spawn(command, args, { stdio: 'inherit' });
 
     process.on('close', code => {
@@ -140,10 +141,10 @@ const run = async () => {
     console.log('Preparing project directory...');
     await checkTargetDir();
 
-    console.log('Copying project files...');
+    console.log('Initialzing project with files...');
     await srcInit();
 
-    console.log('Initializing npm dependencies...');
+    console.log('Creating manifest (package.json)...');
     npmInit();
 
     // change directory to target directory
