@@ -1,7 +1,7 @@
 {
   "name": "create-evergreen-app",
   "version": "0.5.0",
-  "description": "Create an evergreen web application with no build configuration.",
+  "description": "A starter project for getting up and running with an evergreen web application development stack.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "homepage": "https://github.com/ProjectEvergreen/create-evergreen-app#readme",
