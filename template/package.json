@@ -44,7 +44,7 @@
     "puppeteer": "^0.11.0",
     "rimraf": "^2.6.3",
     "webpack": "^4.29.5",
-    "webpack-bundle-analyzer": "^3.0.4",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
     "webpack-manifest-plugin": "^2.0.4",
