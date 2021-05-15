@@ -5,6 +5,9 @@
 [![GitHub issues](https://img.shields.io/github/issues-pr-raw/ProjectEvergreen/create-evergreen-app.svg)](https://github.com/ProjectEvergreen/create-evergreen-app/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ProjectEvergreen/create-evergreen-app/master/LICENSE.md)
 
+> ⛔ _**Attention**_
+> _This project has been archived and is no longer under active maintenance.  If you are looking for a great tool for building websites and apps, please join us with our latest project [**Greenwood**](https://www.greenwoodjs.io/)!_ 🌟
+
 ## Overview
 A starter project for getting up and running with an evergreen web application development stack designed by, and for, today's modern web.
 ![Create Evergreen App](https://s3.amazonaws.com/uploads.thegreenhouse.io/project-evergreen/create-evergreen-app-github-repo-banner-0.4.0.png)
